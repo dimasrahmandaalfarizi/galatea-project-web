@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const timeline = [
+  { step: '01', title: 'Observasi', desc: 'Mengamati kebiasaan masyarakat dalam membuang dan memilah sampah di lingkungan sekitar.' },
+  { step: '02', title: 'Edukasi', desc: 'Menyebarkan materi edukasi melalui poster, infografis, dan video tentang pemilahan sampah yang benar.' },
+  { step: '03', title: 'Survei', desc: 'Mengukur pemahaman masyarakat melalui kuesioner dengan 20 pertanyaan kepada 30 responden.' },
+  { step: '04', title: 'Analisis & Implementasi', desc: 'Mengolah data hasil survei menjadi grafik yang ditampilkan di website ini sebagai tolak ukur keberhasilan.' },
+];
+
+const goals = [
+  { icon: '♻️', title: 'Meningkatkan Kesadaran', desc: 'Meningkatkan pemahaman masyarakat tentang pentingnya pemilahan sampah sejak sumber.' },
+  { icon: '📉', title: 'Mengurangi Sampah TPA', desc: 'Mengurangi volume sampah yang masuk ke Tempat Pembuangan Akhir melalui pemilahan yang benar.' },
+  { icon: '💚', title: 'Lingkungan Lebih Sehat', desc: 'Menciptakan lingkungan yang lebih bersih, sehat, dan layak huni bagi seluruh warga.' },
+  { icon: '📊', title: 'Data Berbasis Bukti', desc: 'Menghasilkan data empiris sebagai tolak ukur keberhasilan program dan dasar kebijakan selanjutnya.' },
+];
+---
+
+<BaseLayout title="Tentang Program" description="Tentang program KWN edukasi pengelolaan sampah — tujuan, latar belakang, dan proses program.">
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="section-container relative">
+      <div class="max-w-3xl" data-aos>
+        <span class="section-badge">Program KWN</span>
+        <h1 class="section-heading text-white mt-6">
+          Tentang <span class="gradient-text italic">EcoWijaya</span>
+        </h1>
+        <p class="text-gray-400 text-lg leading-relaxed mt-6">
+          EcoWijaya adalah program edukasi pengelolaan sampah yang merupakan bagian dari tugas
+          <strong class="text-primary-300">Kewarganegaraan (KWN)</strong>. Program ini dirancang untuk
+          meningkatkan kesadaran masyarakat tentang pentingnya pemilahan sampah melalui konten visual,
+          survei, dan analisis data yang dapat diimplementasikan secara nyata.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latar Belakang -->
+  <section class="py-16">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div data-aos>
+          <span class="section-badge">Latar Belakang</span>
+          <h2 class="section-heading text-white mt-6 text-4xl">
+            Mengapa Pemilahan Sampah Itu <span class="gradient-text italic">Penting?</span>
+          </h2>
+          <div class="space-y-4 mt-6 text-gray-400 leading-relaxed">
+            <p>
+              Indonesia menghasilkan lebih dari <strong class="text-primary-300">67 juta ton sampah</strong> per tahun,
+              namun hanya sebagian kecil yang terkelola dengan baik. Sebagian besar sampah masih berakhir
+              di tempat pembuangan akhir (TPA) tanpa pemilahan terlebih dahulu.
+            </p>
+            <p>
+              Pemilahan sampah dari sumber — yakni dari rumah tangga — adalah solusi paling efektif
+              untuk mengurangi beban TPA, meningkatkan daur ulang, dan menjaga lingkungan tetap bersih.
+            </p>
+            <p>
+              Program KWN ini hadir sebagai upaya edukasi yang terukur: mengajarkan cara memilah,
+              mengukur pemahaman masyarakat, dan menyajikan hasilnya secara transparan.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4" data-aos data-aos-delay="200">
+          {goals.map((g) => (
+            <div class="card-glass p-6">
+              <div class="text-3xl mb-4">{g.icon}</div>
+              <h3 class="text-white font-semibold mb-2">{g.title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{g.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jenis Sampah -->
+  <section class="py-16 border-y border-white/5">
+    <div class="section-container">
+      <div class="text-center mb-12" data-aos>
+        <span class="section-badge">Materi Edukasi</span>
+        <h2 class="section-heading text-white mt-6">3 Jenis Sampah yang <span class="gradient-text italic">Harus Diketahui</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            color: 'from-green-900/50 to-green-800/20',
+            border: 'border-green-700/40',
+            dot: 'bg-green-500',
+            emoji: '🌿',
+            title: 'Sampah Organik',
+            examples: ['Sisa makanan', 'Daun & ranting', 'Sayur & buah busuk', 'Ampas kopi/teh'],
+            tip: 'Bisa diolah menjadi kompos untuk pupuk tanaman.',
+          },
+          {
+            color: 'from-blue-900/50 to-blue-800/20',
+            border: 'border-blue-700/40',
+            dot: 'bg-blue-500',
+            emoji: '♻️',
+            title: 'Sampah Anorganik',
+            examples: ['Plastik & botol', 'Kertas & karton', 'Kaleng & logam', 'Kaca & beling'],
+            tip: 'Dapat didaur ulang — pisahkan dari sampah organik.',
+          },
+          {
+            color: 'from-red-900/50 to-red-800/20',
+            border: 'border-red-700/40',
+            dot: 'bg-red-500',
+            emoji: '⚠️',
+            title: 'Sampah B3',
+            examples: ['Baterai bekas', 'Lampu neon', 'Obat kedaluwarsa', 'Cat & solvent'],
+            tip: 'Berbahaya — antar ke tempat pengumpulan B3 khusus.',
+          },
+        ].map((type, i) => (
+          <div
+            class={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${type.color} border ${type.border} p-8`}
+            data-aos
+            data-aos-delay={String(i * 150)}
+          >
+            <div class="text-4xl mb-4">{type.emoji}</div>
+            <h3 class="text-white font-semibold text-xl mb-4">{type.title}</h3>
+            <ul class="space-y-2 mb-6">
+              {type.examples.map((ex) => (
+                <li class="flex items-center gap-2 text-gray-400 text-sm">
+                  <div class={`w-1.5 h-1.5 rounded-full ${type.dot} flex-shrink-0`}></div>
+                  {ex}
+                </li>
+              ))}
+            </ul>
+            <div class={`bg-white/5 rounded-xl p-4 border ${type.border}`}>
+              <p class="text-gray-300 text-sm leading-relaxed">💡 {type.tip}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16">
+    <div class="section-container">
+      <div class="text-center mb-12" data-aos>
+        <span class="section-badge">Alur Program</span>
+        <h2 class="section-heading text-white mt-6">Bagaimana Program <span class="gradient-text italic">Berjalan?</span></h2>
+      </div>
+      <div class="relative">
+        <!-- Line -->
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-600 via-primary-500/50 to-transparent -translate-x-1/2"></div>
+
+        <div class="space-y-12">
+          {timeline.map((item, i) => (
+            <div
+              class={`relative flex flex-col md:flex-row gap-8 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+              data-aos
+              data-aos-delay={String(i * 150)}
+            >
+              <div class="flex-1">
+                <div class={`card-glass p-8 ${i % 2 === 1 ? 'md:text-right' : ''}`}>
+                  <div class="text-primary-400 text-sm font-bold uppercase tracking-widest mb-2">Step {item.step}</div>
+                  <h3 class="text-white text-2xl font-semibold font-serif mb-3">{item.title}</h3>
+                  <p class="text-gray-400 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+
+              <!-- Center dot -->
+              <div class="hidden md:flex w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 items-center justify-center flex-shrink-0 z-10 shadow-lg shadow-primary-700/40">
+                <span class="text-white font-bold text-sm">{item.step}</span>
+              </div>
+
+              <div class="flex-1 hidden md:block"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

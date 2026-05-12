@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const teamMembers = [
+  { id: 1, name: 'Nama Anggota 1', role: 'Ketua Tim', bio: 'Bertanggung jawab atas koordinasi program dan pelaksanaan kegiatan KWN secara keseluruhan.', initials: 'A1', color: 'from-primary-600 to-primary-800' },
+  { id: 2, name: 'Nama Anggota 2', role: 'Desainer Konten', bio: 'Membuat poster, infografis, dan konten visual untuk media edukasi pengelolaan sampah.', initials: 'A2', color: 'from-blue-600 to-blue-800' },
+  { id: 3, name: 'Nama Anggota 3', role: 'Pengembang Web', bio: 'Merancang dan mengembangkan website EcoWijaya sebagai platform edukasi digital.', initials: 'A3', color: 'from-purple-600 to-purple-800' },
+  { id: 4, name: 'Nama Anggota 4', role: 'Peneliti & Surveyor', bio: 'Menyusun kuesioner, mengumpulkan data survei, dan menganalisis hasil dari 30 responden.', initials: 'A4', color: 'from-orange-600 to-orange-800' },
+  { id: 5, name: 'Nama Anggota 5', role: 'Humas & Dokumentasi', bio: 'Mendokumentasikan setiap kegiatan program dan mengelola komunikasi dengan masyarakat.', initials: 'A5', color: 'from-teal-600 to-teal-800' },
+  { id: 6, name: 'Nama Anggota 6', role: 'Koordinator Lapangan', bio: 'Mengkoordinir kegiatan lapangan dan memastikan distribusi materi edukasi berjalan lancar.', initials: 'A6', color: 'from-rose-600 to-rose-800' },
+];
+
+const roles = [
+  { icon: '🎯', title: 'Ketua Tim', desc: 'Koordinasi dan perencanaan program secara menyeluruh' },
+  { icon: '🎨', title: 'Desainer', desc: 'Produksi konten visual dan materi edukasi' },
+  { icon: '💻', title: 'Pengembang', desc: 'Pengembangan platform digital EcoWijaya' },
+  { icon: '📊', title: 'Peneliti', desc: 'Pengumpulan dan analisis data survei' },
+];
+---
+
+<BaseLayout title="Tim Kami" description="Kenali tim EcoWijaya — kelompok muda yang berdedikasi untuk edukasi pengelolaan sampah Indonesia.">
+
+  <!-- Hero -->
+  <section class="pt-32 pb-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="section-container relative">
+      <div class="max-w-2xl" data-aos>
+        <span class="section-badge">Tentang Kami</span>
+        <h1 class="section-heading text-white mt-6">
+          Tim <span class="gradient-text italic">EcoWijaya</span>
+        </h1>
+        <p class="text-gray-400 text-lg mt-4 leading-relaxed">
+          Kami adalah kelompok mahasiswa yang peduli lingkungan, bersatu dalam program KWN untuk
+          membawa perubahan nyata melalui edukasi pengelolaan sampah.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Role Overview -->
+  <section class="py-8">
+    <div class="section-container">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {roles.map((role, i) => (
+          <div class="card-glass p-6 text-center" data-aos data-aos-delay={String(i * 100)}>
+            <div class="text-3xl mb-3">{role.icon}</div>
+            <h3 class="text-white font-semibold mb-1">{role.title}</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">{role.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Grid -->
+  <section class="py-16">
+    <div class="section-container">
+      <div class="text-center mb-12" data-aos>
+        <span class="section-badge">Anggota Tim</span>
+        <h2 class="section-heading text-white mt-6">Kenali <span class="gradient-text italic">Anggota Kami</span></h2>
+        <p class="text-gray-500 mt-4 text-sm">Foto anggota akan segera diperbarui</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {teamMembers.map((member, i) => (
+          <div
+            class="card-glass overflow-hidden group hover:scale-[1.03] transition-all duration-300"
+            data-aos
+            data-aos-delay={String((i % 3) * 100)}
+          >
+            <!-- Avatar placeholder -->
+            <div class={`relative h-48 bg-gradient-to-br ${member.color} flex items-center justify-center`}>
+              <div class="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center shadow-xl">
+                <span class="text-white text-3xl font-serif font-normal">{member.initials}</span>
+              </div>
+              <!-- Decorative circles -->
+              <div class="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/5 border border-white/10"></div>
+              <div class="absolute bottom-4 left-4 w-10 h-10 rounded-full bg-white/5 border border-white/10"></div>
+              <!-- Role badge -->
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                <span class="text-white/80 text-xs font-medium bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+                  {member.role}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-white font-semibold text-xl mb-1 group-hover:text-primary-300 transition-colors">{member.name}</h3>
+              <p class="text-primary-400 text-sm font-medium mb-3">{member.role}</p>
+              <p class="text-gray-500 text-sm leading-relaxed">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Dosen Pembimbing -->
+  <section class="py-12 border-t border-white/5">
+    <div class="section-container">
+      <div class="max-w-xl mx-auto text-center" data-aos>
+        <span class="section-badge">Pembimbing</span>
+        <h2 class="text-white font-semibold text-2xl mt-6 mb-6">Dosen Pembimbing</h2>
+        <div class="card-glass p-8 flex flex-col items-center">
+          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center mb-4 shadow-lg shadow-primary-900/50">
+            <span class="text-white text-3xl font-serif">DP</span>
+          </div>
+          <h3 class="text-white font-semibold text-xl mb-1">Nama Dosen Pembimbing</h3>
+          <p class="text-primary-400 text-sm mb-4">Mata Kuliah Kewarganegaraan</p>
+          <p class="text-gray-500 text-sm text-center leading-relaxed">
+            Membimbing dan mengarahkan program KWN edukasi pengelolaan sampah ini dari tahap perencanaan hingga implementasi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

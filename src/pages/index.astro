@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const videoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4';
+
+const stats = [
+  { value: 67.8, suffix: 'jt ton', label: 'Sampah diproduksi Indonesia per tahun', decimals: 1 },
+  { value: 60, suffix: '%', label: 'Sampah organik yang bisa diolah', decimals: 0 },
+  { value: 300, suffix: '+', label: 'Kota perlu perbaikan sistem sampah', decimals: 0 },
+  { value: 2030, suffix: '', label: 'Target Indonesia bebas sampah', decimals: 0 },
+];
+
+const sections = [
+  {
+    href: '/about',
+    icon: '🌱',
+    title: 'Tentang Program',
+    desc: 'Kenali tujuan dan latar belakang program edukasi pengelolaan sampah KWN ini.',
+    badge: 'KWN 2026',
+  },
+  {
+    href: '/infographics',
+    icon: '📊',
+    title: 'Infografis',
+    desc: 'Visualisasi data dan cara pemilahan sampah yang mudah dipahami.',
+    badge: 'Edukasi',
+  },
+  {
+    href: '/poster',
+    icon: '🎨',
+    title: 'Poster Edukasi',
+    desc: 'Kumpulan poster informatif tentang jenis-jenis sampah dan pengelolaannya.',
+    badge: 'Visual',
+  },
+  {
+    href: '/kuesioner',
+    icon: '📋',
+    title: 'Kuesioner',
+    desc: 'Ikuti kuesioner dan lihat grafik hasil survei dari 30 responden.',
+    badge: 'Survei',
+  },
+];
+---
+
+<BaseLayout title="Beranda" description="EcoWijaya — Edukasi pengelolaan sampah untuk Indonesia yang lebih hijau. Program Kewarganegaraan 2026.">
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <section class="relative min-h-screen w-full overflow-hidden flex flex-col">
+    <!-- Video Background -->
+    <div class="absolute inset-0 z-0">
+      <video
+        id="hero-video"
+        class="absolute w-full h-full object-cover"
+        style="top: 200px; bottom: 0; height: calc(100% - 200px);"
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src={videoUrl} type="video/mp4" />
+      </video>
+
+      <!-- Gradient overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0f1a14] via-[#0f1a14]/50 to-[#0f1a14]"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0f1a14]/60 via-transparent to-[#0f1a14]/40"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 pt-32 pb-24">
+      <!-- Badge -->
+      <div class="section-badge animate-fade-rise mb-8" style="opacity:0">
+        <span class="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
+        Program Kewarganegaraan 2026
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl max-w-5xl leading-[0.95] tracking-tight animate-fade-rise-delay text-white" style="opacity:0;letter-spacing:-2px;">
+        Jaga Bumi,
+        <span class="gradient-text italic"> Mulai dari</span>
+        <br />Sampahmu
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-gray-400 text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay-2" style="opacity:0">
+        Edukasi pemilahan sampah adalah langkah pertama menuju Indonesia yang lebih bersih dan berkelanjutan.
+        Mari belajar bersama dan wujudkan perubahan nyata.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 mt-12 animate-fade-rise-delay-3" style="opacity:0">
+        <a href="/kuesioner" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          Ikuti Kuesioner
+        </a>
+        <a href="/infographics" class="btn-outline">
+          Lihat Infografis
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
+        <span class="text-gray-600 text-xs uppercase tracking-widest">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-primary-500/50 to-transparent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ STATS ═══════════════════════════════════ -->
+  <section class="py-24 border-y border-white/5">
+    <div class="section-container">
+      <div class="text-center mb-16" data-aos>
+        <span class="section-badge">Fakta & Data</span>
+        <h2 class="section-heading text-white mt-6">Kondisi Sampah <span class="gradient-text italic">Indonesia</span></h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Angka-angka yang mendorong kita untuk bertindak sekarang.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {stats.map((stat, i) => (
+          <div class="card-glass p-8 text-center group" data-aos data-aos-delay={String(i * 100)}>
+            <div
+              class="stat-num text-4xl lg:text-5xl font-serif font-normal gradient-text mb-3"
+              data-target={stat.value}
+              data-suffix={stat.suffix}
+              data-decimals={stat.decimals}
+            >
+              0{stat.suffix}
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ SECTIONS ═══════════════════════════════════ -->
+  <section class="py-24">
+    <div class="section-container">
+      <div class="text-center mb-16" data-aos>
+        <span class="section-badge">Jelajahi</span>
+        <h2 class="section-heading text-white mt-6">Apa yang Ada di <span class="gradient-text italic">EcoWijaya?</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sections.map((s, i) => (
+          <a
+            href={s.href}
+            class="card-glass p-8 group flex gap-6 items-start hover:scale-[1.02] transition-transform duration-300"
+            data-aos
+            data-aos-delay={String(i * 100)}
+          >
+            <div class="text-4xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{s.icon}</div>
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <h3 class="text-white font-semibold text-xl">{s.title}</h3>
+                <span class="text-xs text-primary-400 bg-primary-900/50 px-2 py-1 rounded-full">{s.badge}</span>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
+              <div class="flex items-center gap-2 mt-4 text-primary-400 text-sm font-medium group-hover:gap-3 transition-all">
+                Lihat selengkapnya
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ CTA BANNER ═══════════════════════════════════ -->
+  <section class="py-24">
+    <div class="section-container">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-900/80 to-primary-700/30 border border-primary-700/40 p-12 md:p-16 text-center"
+        data-aos
+      >
+        <!-- Decorative circles -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-earth-300/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+
+        <span class="section-badge relative">Ambil Bagian</span>
+        <h2 class="section-heading text-white mt-6 relative">
+          Mulai Perubahan <span class="gradient-text italic">Sekarang</span>
+        </h2>
+        <p class="text-gray-400 mt-4 max-w-xl mx-auto relative">
+          Isi kuesioner kami, lihat hasil survei, dan jadilah bagian dari gerakan pengelolaan sampah yang lebih baik.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 relative">
+          <a href="/kuesioner" class="btn-primary">
+            Ikuti Kuesioner Sekarang
+          </a>
+          <a href="/team" class="btn-outline">
+            Kenali Tim Kami
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Hero video fade loop
+  const video = document.getElementById('hero-video') as HTMLVideoElement;
+
+  if (video) {
+    const FADE_DURATION = 0.5;
+    let animFrame: number;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    function tick() {
+      if (!video.duration) { animFrame = requestAnimationFrame(tick); return; }
+      const t = video.currentTime;
+      const d = video.duration;
+
+      if (t < FADE_DURATION) {
+        video.style.opacity = String(Math.min(t / FADE_DURATION, 1));
+      } else if (t > d - FADE_DURATION) {
+        video.style.opacity = String(Math.max((d - t) / FADE_DURATION, 0));
+      } else {
+        video.style.opacity = '1';
+      }
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    video.addEventListener('ended', () => {
+      video.style.opacity = '0';
+      setTimeout(() => {
+        video.currentTime = 0;
+        video.play();
+      }, 100);
+    });
+
+    video.style.opacity = '0';
+    video.play().then(() => {
+      animFrame = requestAnimationFrame(tick);
+    }).catch(() => {});
+  }
+
+  // Stat counters
+  const counters = document.querySelectorAll('[data-target]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      const target = parseFloat(el.dataset.target || '0');
+      const suffix = el.dataset.suffix || '';
+      const decimals = parseInt(el.dataset.decimals || '0');
+      const duration = 2000;
+      const start = performance.now();
+
+      function animate(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        el.textContent = current.toFixed(decimals) + suffix;
+        if (progress < 1) requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((el) => counterObserver.observe(el));
+</script>

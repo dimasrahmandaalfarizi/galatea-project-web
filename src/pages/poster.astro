@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posters = [
+  { id: 1, title: 'Cara Memilah Sampah Organik', category: 'Organik', color: 'from-green-900/60 to-green-700/20', icon: '🌿', bg: '#1a2f1e', desc: 'Panduan lengkap memilah sampah organik dari sumber rumah tangga.' },
+  { id: 2, title: 'Sampah Plastik & Cara Daur Ulang', category: 'Anorganik', color: 'from-blue-900/60 to-blue-700/20', icon: '♻️', bg: '#1a1e2f', desc: 'Kenali jenis plastik dan cara mendaur ulangnya dengan benar.' },
+  { id: 3, title: 'Bahaya Sampah B3 bagi Lingkungan', category: 'B3', color: 'from-red-900/60 to-red-700/20', icon: '⚠️', bg: '#2f1a1a', desc: 'Dampak berbahaya sampah B3 dan cara penanganan yang aman.' },
+  { id: 4, title: 'Kompos dari Sampah Dapur', category: 'Organik', color: 'from-emerald-900/60 to-emerald-700/20', icon: '🪣', bg: '#1a2b20', desc: 'Langkah mudah membuat kompos dari limbah dapur sehari-hari.' },
+  { id: 5, title: 'Bank Sampah — Solusi Cerdas', category: 'Anorganik', color: 'from-indigo-900/60 to-indigo-700/20', icon: '🏦', bg: '#1e1a2f', desc: 'Manfaatkan bank sampah untuk menghasilkan nilai ekonomis dari limbah.' },
+  { id: 6, title: 'Stop Buang Sampah Sembarangan', category: 'Umum', color: 'from-orange-900/60 to-orange-700/20', icon: '🚫', bg: '#2f2010', desc: 'Dampak dan konsekuensi membuang sampah tidak pada tempatnya.' },
+];
+---
+
+<BaseLayout title="Poster Edukasi" description="Kumpulan poster edukasi pemilahan dan pengelolaan sampah dari program KWN EcoWijaya.">
+
+  <!-- Hero -->
+  <section class="pt-32 pb-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-earth-300/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="section-container relative">
+      <div class="max-w-2xl" data-aos>
+        <span class="section-badge">Visual Edukasi</span>
+        <h1 class="section-heading text-white mt-6">
+          Poster <span class="gradient-text italic">Edukasi</span>
+        </h1>
+        <p class="text-gray-400 text-lg mt-4 leading-relaxed">
+          Kumpulan poster informatif tentang pemilahan sampah, daur ulang, dan pengelolaan limbah yang benar.
+          Desain poster sedang disiapkan — segera hadir!
+        </p>
+      </div>
+
+      <!-- Filter -->
+      <div class="flex flex-wrap gap-3 mt-8" id="filter-btns">
+        {['Semua', 'Organik', 'Anorganik', 'B3', 'Umum'].map((cat) => (
+          <button
+            class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-200"
+            data-filter={cat === 'Semua' ? 'all' : cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Poster Grid -->
+  <section class="py-8 pb-24">
+    <div class="section-container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="poster-grid">
+        {posters.map((poster, i) => (
+          <div
+            class="poster-card card-glass overflow-hidden group cursor-pointer hover:scale-[1.03] transition-all duration-300"
+            data-category={poster.category}
+            data-aos
+            data-aos-delay={String((i % 3) * 100)}
+            id={`poster-${poster.id}`}
+          >
+            <!-- Placeholder Image -->
+            <div
+              class={`relative h-64 bg-gradient-to-br ${poster.color} flex flex-col items-center justify-center`}
+              style={`background-color: ${poster.bg}`}
+            >
+              <div class="text-7xl mb-3 group-hover:scale-110 transition-transform duration-500">{poster.icon}</div>
+              <div class="absolute top-4 right-4">
+                <span class="bg-white/10 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">
+                  {poster.category}
+                </span>
+              </div>
+              <!-- Coming soon overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                <span class="text-white/70 text-xs font-medium">📌 Poster akan segera tersedia</span>
+              </div>
+              <!-- Hover overlay -->
+              <div class="absolute inset-0 bg-primary-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div class="bg-white/20 backdrop-blur-sm rounded-full p-4 border border-white/30">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-white font-semibold text-lg mb-2 leading-tight">{poster.title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{poster.desc}</p>
+              <div class="flex items-center justify-between mt-4">
+                <span class="text-xs text-primary-400 font-medium">#{poster.category}</span>
+                <button class="text-gray-600 hover:text-primary-400 transition-colors text-xs flex items-center gap-1">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                  </svg>
+                  Unduh
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Upload notice -->
+      <div class="card-glass p-8 mt-12 text-center" data-aos>
+        <div class="text-4xl mb-4">📂</div>
+        <h3 class="text-white font-semibold text-xl mb-2">Ingin Menambah Poster?</h3>
+        <p class="text-gray-400 text-sm max-w-md mx-auto">
+          Hubungi tim EcoWijaya untuk mengunggah poster edukasi baru ke galeri ini.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .filter-btn {
+    background: rgba(255,255,255,0.05);
+    color: #9ca3af;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: rgba(45, 106, 79, 0.4);
+    color: #86efac;
+    border-color: rgba(82, 183, 136, 0.4);
+  }
+  .poster-card.hidden-filter {
+    display: none;
+  }
+</style>
+
+<script>
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.poster-card');
+
+  btns[0]?.classList.add('active');
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      btns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLElement).dataset.filter;
+      cards.forEach((card) => {
+        const cat = (card as HTMLElement).dataset.category;
+        if (filter === 'all' || cat === filter) {
+          card.classList.remove('hidden-filter');
+        } else {
+          card.classList.add('hidden-filter');
+        }
+      });
+    });
+  });
+</script>

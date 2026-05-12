@@ -1,0 +1,213 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = 'Website edukasi pengelolaan sampah untuk program Kewarganegaraan. Pelajari cara memilah sampah dengan benar dan berkontribusi untuk lingkungan yang lebih baik.',
+  image = '/og-image.jpg',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} — EcoWijaya`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} — EcoWijaya</title>
+  </head>
+  <body class="noise-overlay">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+      <div class="section-container">
+        <div class="flex items-center justify-between h-18 py-4">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-700/30 group-hover:shadow-primary-500/40 transition-shadow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <span class="font-serif text-xl text-white tracking-tight">EcoWijaya<sup class="text-primary-400 text-xs">®</sup></span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-8">
+            {[
+              { href: '/', label: 'Beranda' },
+              { href: '/about', label: 'Tentang' },
+              { href: '/poster', label: 'Poster' },
+              { href: '/infographics', label: 'Infografis' },
+              { href: '/team', label: 'Tim' },
+              { href: '/gallery', label: 'Galeri' },
+            ].map(({ href, label }) => (
+              <a
+                href={href}
+                class={`nav-link ${currentPath === href ? 'active' : ''}`}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <div class="hidden md:flex items-center gap-4">
+            <a href="/kuesioner" class="btn-primary text-sm py-3 px-6">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              Isi Kuesioner
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white transition-colors p-2" aria-label="Menu">
+            <svg id="menu-open-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+            <svg id="menu-close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-dark/95 backdrop-blur-xl">
+        <div class="section-container py-6 flex flex-col gap-4">
+          {[
+            { href: '/', label: 'Beranda' },
+            { href: '/about', label: 'Tentang' },
+            { href: '/poster', label: 'Poster' },
+            { href: '/infographics', label: 'Infografis' },
+            { href: '/team', label: 'Tim' },
+            { href: '/gallery', label: 'Galeri' },
+            { href: '/kuesioner', label: 'Kuesioner' },
+          ].map(({ href, label }) => (
+            <a href={href} class={`text-lg ${currentPath === href ? 'text-primary-400' : 'text-gray-300'} hover:text-white transition-colors`}>
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 mt-20">
+      <div class="section-container py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span class="font-serif text-lg text-white">EcoWijaya<sup class="text-primary-400 text-xs">®</sup></span>
+            </div>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Edukasi pengelolaan sampah untuk Indonesia yang lebih hijau dan berkelanjutan.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-widest">Navigasi</h4>
+            <ul class="space-y-3">
+              {[
+                { href: '/', label: 'Beranda' },
+                { href: '/about', label: 'Tentang Program' },
+                { href: '/infographics', label: 'Infografis' },
+                { href: '/kuesioner', label: 'Kuesioner' },
+              ].map(({ href, label }) => (
+                <li>
+                  <a href={href} class="text-gray-500 hover:text-primary-400 text-sm transition-colors">{label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-widest">Program KWN</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Program Kewarganegaraan — Edukasi pemilahan sampah sebagai tolak ukur kesadaran lingkungan masyarakat.
+            </p>
+            <div class="mt-4 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></div>
+              <span class="text-primary-400 text-xs font-medium">Aktif 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-gray-600 text-xs">© 2026 EcoWijaya. Program Kewarganegaraan.</p>
+          <p class="text-gray-600 text-xs">Bersama Jaga Bumi 🌿</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll & Nav scripts -->
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar?.classList.add('bg-dark/90', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-xl');
+        } else {
+          navbar?.classList.remove('bg-dark/90', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-xl');
+        }
+      });
+
+      // Mobile menu
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-open-icon');
+      const closeIcon = document.getElementById('menu-close-icon');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+        openIcon?.classList.toggle('hidden');
+        closeIcon?.classList.toggle('hidden');
+      });
+
+      // Scroll-triggered animations (lightweight AOS)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('aos-animate');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('[data-aos]').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

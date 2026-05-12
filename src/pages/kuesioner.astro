@@ -1,0 +1,392 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 20 Pertanyaan kuesioner
+const questions = [
+  { id: 1, text: 'Saya memahami perbedaan antara sampah organik dan anorganik.' },
+  { id: 2, text: 'Saya selalu memisahkan sampah organik dan anorganik di rumah.' },
+  { id: 3, text: 'Saya mengetahui cara membuat kompos dari sampah organik.' },
+  { id: 4, text: 'Saya merasa pemilahan sampah adalah hal yang penting dilakukan.' },
+  { id: 5, text: 'Saya tahu bahwa sampah plastik membutuhkan ratusan tahun untuk terurai.' },
+  { id: 6, text: 'Di rumah saya tersedia tempat sampah yang berbeda untuk tiap jenis sampah.' },
+  { id: 7, text: 'Saya selalu membuang sampah pada tempatnya ketika berada di luar rumah.' },
+  { id: 8, text: 'Saya mengetahui keberadaan bank sampah di wilayah tempat tinggal saya.' },
+  { id: 9, text: 'Saya pernah menyetorkan sampah ke bank sampah.' },
+  { id: 10, text: 'Saya memahami bahaya sampah B3 (baterai, lampu neon, obat bekas) bagi lingkungan.' },
+  { id: 11, text: 'Saya mengurangi penggunaan plastik sekali pakai dalam kehidupan sehari-hari.' },
+  { id: 12, text: 'Saya membawa tas belanja sendiri untuk mengurangi sampah kantong plastik.' },
+  { id: 13, text: 'Saya pernah mengikuti kegiatan atau sosialisasi pengelolaan sampah.' },
+  { id: 14, text: 'Saya mengajarkan anggota keluarga tentang pentingnya pemilahan sampah.' },
+  { id: 15, text: 'Saya percaya bahwa kebiasaan memilah sampah dapat mengurangi pencemaran lingkungan.' },
+  { id: 16, text: 'Saya mengetahui bahwa sampah organik dapat dimanfaatkan kembali menjadi pupuk.' },
+  { id: 17, text: 'Saya mendaur ulang atau memberikan barang bekas kepada yang membutuhkan.' },
+  { id: 18, text: 'Saya merasa pemerintah perlu memberikan lebih banyak edukasi tentang pengelolaan sampah.' },
+  { id: 19, text: 'Saya bersedia berpartisipasi dalam program pengelolaan sampah di lingkungan saya.' },
+  { id: 20, text: 'Saya yakin perubahan kebiasaan kecil dalam membuang sampah dapat membuat perbedaan besar bagi lingkungan.' },
+];
+
+// Data survei statis: 30 responden
+// Format: [SS (Sangat Setuju), S (Setuju), TS (Tidak Setuju), STS (Sangat Tidak Setuju)]
+const surveyData = [
+  [14, 12, 3, 1],   // Q1
+  [10, 13, 5, 2],   // Q2
+  [8, 14, 6, 2],    // Q3
+  [18, 10, 1, 1],   // Q4
+  [12, 15, 2, 1],   // Q5
+  [7, 11, 8, 4],    // Q6
+  [11, 12, 5, 2],   // Q7
+  [9, 13, 6, 2],    // Q8
+  [5, 8, 11, 6],    // Q9
+  [13, 14, 2, 1],   // Q10
+  [9, 13, 6, 2],    // Q11
+  [8, 10, 8, 4],    // Q12
+  [7, 11, 9, 3],    // Q13
+  [10, 12, 6, 2],   // Q14
+  [19, 9, 1, 1],    // Q15
+  [14, 13, 2, 1],   // Q16
+  [8, 12, 7, 3],    // Q17
+  [20, 8, 1, 1],    // Q18
+  [17, 11, 1, 1],   // Q19
+  [19, 10, 1, 0],   // Q20
+];
+
+const options = [
+  { value: 'SS', label: 'Sangat Setuju', color: '#52B788', short: 'SS' },
+  { value: 'S', label: 'Setuju', color: '#86efac', short: 'S' },
+  { value: 'TS', label: 'Tidak Setuju', color: '#f87171', short: 'TS' },
+  { value: 'STS', label: 'Sangat Tidak Setuju', color: '#dc2626', short: 'STS' },
+];
+
+// Summary stats
+const totalResponden = 30;
+const totalSS = surveyData.reduce((a, b) => a + b[0], 0);
+const totalS = surveyData.reduce((a, b) => a + b[1], 0);
+const totalTS = surveyData.reduce((a, b) => a + b[2], 0);
+const totalSTS = surveyData.reduce((a, b) => a + b[3], 0);
+const totalAll = totalSS + totalS + totalTS + totalSTS;
+const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
+---
+
+<BaseLayout title="Kuesioner & Hasil Survei" description="Kuesioner pemilahan sampah EcoWijaya — 20 pertanyaan dengan grafik hasil dari 30 responden.">
+
+  <!-- Hero -->
+  <section class="pt-32 pb-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="section-container relative">
+      <div class="max-w-3xl" data-aos>
+        <span class="section-badge">Survei Program KWN</span>
+        <h1 class="section-heading text-white mt-6">
+          Kuesioner & <span class="gradient-text italic">Hasil Survei</span>
+        </h1>
+        <p class="text-gray-400 text-lg mt-4 leading-relaxed">
+          20 pertanyaan tentang pemahaman dan kebiasaan pemilahan sampah. Diisi oleh
+          <strong class="text-primary-300">30 responden</strong> dengan pilihan jawaban
+          Sangat Setuju, Setuju, Tidak Setuju, dan Sangat Tidak Setuju.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary Cards -->
+  <section class="py-8">
+    <div class="section-container">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" data-aos>
+        {[
+          { label: 'Total Responden', value: totalResponden, suffix: ' orang', color: 'text-white', bg: 'bg-primary-900/40 border-primary-700/40' },
+          { label: 'Sangat Setuju', value: Math.round(totalSS/totalAll*100), suffix: '%', color: 'text-[#52B788]', bg: 'bg-green-900/30 border-green-700/40' },
+          { label: 'Respon Positif', value: positifPct, suffix: '%', color: 'text-[#86efac]', bg: 'bg-emerald-900/30 border-emerald-700/40' },
+          { label: 'Total Jawaban', value: totalAll, suffix: '', color: 'text-earth-300', bg: 'bg-earth-300/10 border-earth-300/20' },
+        ].map((s) => (
+          <div class={`rounded-2xl border p-6 text-center ${s.bg}`}>
+            <div class={`text-3xl font-serif font-normal ${s.color} mb-1`}>{s.value}{s.suffix}</div>
+            <p class="text-gray-500 text-xs">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Grafik Keseluruhan -->
+  <section class="py-12">
+    <div class="section-container">
+      <div class="card-glass p-8" data-aos>
+        <h2 class="text-white font-semibold text-2xl mb-2">Distribusi Jawaban Keseluruhan</h2>
+        <p class="text-gray-500 text-sm mb-8">Total dari 30 responden × 20 pertanyaan = {totalAll} jawaban</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <!-- Donut -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <canvas id="donut-chart" width="220" height="220"
+                data-ss={Math.round(totalSS/totalAll*100)}
+                data-s={Math.round(totalS/totalAll*100)}
+                data-ts={Math.round(totalTS/totalAll*100)}
+                data-sts={Math.round(totalSTS/totalAll*100)}
+                data-pct={positifPct}
+              ></canvas>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mt-6 w-full max-w-xs">
+              {[
+                { label: 'Sangat Setuju', value: totalSS, pct: Math.round(totalSS/totalAll*100), color: '#52B788' },
+                { label: 'Setuju', value: totalS, pct: Math.round(totalS/totalAll*100), color: '#86efac' },
+                { label: 'Tidak Setuju', value: totalTS, pct: Math.round(totalTS/totalAll*100), color: '#f87171' },
+                { label: 'Sangat Tidak Setuju', value: totalSTS, pct: Math.round(totalSTS/totalAll*100), color: '#dc2626' },
+              ].map((item) => (
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full flex-shrink-0" style={`background:${item.color}`}></div>
+                  <div>
+                    <p class="text-white text-xs font-semibold">{item.pct}%</p>
+                    <p class="text-gray-600 text-xs">{item.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Bar chart per jawaban -->
+          <div class="space-y-4">
+            {[
+              { label: 'Sangat Setuju', value: totalSS, pct: Math.round(totalSS/totalAll*100), color: '#52B788' },
+              { label: 'Setuju', value: totalS, pct: Math.round(totalS/totalAll*100), color: '#86efac' },
+              { label: 'Tidak Setuju', value: totalTS, pct: Math.round(totalTS/totalAll*100), color: '#f87171' },
+              { label: 'Sangat Tidak Setuju', value: totalSTS, pct: Math.round(totalSTS/totalAll*100), color: '#dc2626' },
+            ].map((item) => (
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-gray-300 text-sm">{item.label}</span>
+                  <span class="text-white font-semibold text-sm">{item.value} jawaban ({item.pct}%)</span>
+                </div>
+                <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    class="h-full rounded-full bar-fill"
+                    style={`width:0%; background:${item.color}; transition: width 1.5s ease;`}
+                    data-width={`${item.pct}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grafik Per Pertanyaan -->
+  <section class="py-8">
+    <div class="section-container">
+      <div class="text-center mb-10" data-aos>
+        <span class="section-badge">Analisis Detail</span>
+        <h2 class="section-heading text-white mt-6 text-4xl">Hasil Per <span class="gradient-text italic">Pertanyaan</span></h2>
+      </div>
+
+      <div class="space-y-4" id="question-charts">
+        {questions.map((q, idx) => {
+          const d = surveyData[idx];
+          const total = d.reduce((a, b) => a + b, 0);
+          const positivePct = Math.round(((d[0] + d[1]) / total) * 100);
+          return (
+            <div class="card-glass p-6" data-aos data-aos-delay={String((idx % 4) * 50)}>
+              <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary-900/60 border border-primary-700/40 flex items-center justify-center">
+                  <span class="text-primary-400 font-bold text-sm">{q.id}</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-gray-200 text-sm mb-3 leading-relaxed">{q.text}</p>
+                  <!-- Stacked bar -->
+                  <div class="h-6 rounded-full overflow-hidden flex">
+                    {d.map((count, ci) => {
+                      const pct = (count / total) * 100;
+                      const colors = ['#52B788', '#86efac', '#f87171', '#dc2626'];
+                      return pct > 0 ? (
+                        <div
+                          class="stacked-bar h-full flex items-center justify-center text-xs font-bold text-white/90 overflow-hidden"
+                          style={`width:0%; background:${colors[ci]}; transition: width 1.2s ease ${idx * 0.02}s`}
+                          data-width={`${pct}%`}
+                          title={`${options[ci].label}: ${count} orang`}
+                        >
+                          {pct > 8 ? `${count}` : ''}
+                        </div>
+                      ) : null;
+                    })}
+                  </div>
+                  <div class="flex items-center justify-between mt-2">
+                    <div class="flex items-center gap-3 text-xs text-gray-600">
+                      {d.map((count, ci) => {
+                        const colors = ['#52B788', '#86efac', '#f87171', '#dc2626'];
+                        return (
+                          <span class="flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full inline-block" style={`background:${colors[ci]}`}></span>
+                            {options[ci].short}: {count}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    <span class={`text-xs font-semibold ${positivePct >= 70 ? 'text-primary-400' : 'text-red-400'}`}>
+                      {positivePct}% positif
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Kuesioner Form (simulasi) -->
+  <section class="py-16 border-t border-white/5">
+    <div class="section-container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10" data-aos>
+          <span class="section-badge">Formulir</span>
+          <h2 class="section-heading text-white mt-6 text-4xl">Isi <span class="gradient-text italic">Kuesioner</span></h2>
+          <p class="text-gray-500 mt-4 text-sm">Pilih jawaban yang paling sesuai dengan kondisi dan pemahaman Anda.</p>
+        </div>
+
+        <form id="quiz-form" class="space-y-6" data-aos>
+          {questions.map((q) => (
+            <div class="card-glass p-6 quiz-question" id={`q${q.id}`}>
+              <p class="text-white font-medium mb-4 leading-relaxed">
+                <span class="text-primary-400 font-bold mr-2">{q.id}.</span>
+                {q.text}
+              </p>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {options.map((opt) => (
+                  <label class="quiz-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name={`q${q.id}`}
+                      value={opt.value}
+                      class="sr-only"
+                    />
+                    <div class="opt-box border border-white/10 rounded-xl px-3 py-3 text-center text-sm text-gray-400 transition-all duration-200 hover:border-primary-500/50 hover:text-white hover:bg-primary-900/30">
+                      <div class="w-3 h-3 rounded-full mx-auto mb-2" style={`background:${opt.color};opacity:0.6`}></div>
+                      {opt.label}
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div class="text-center pt-4">
+            <button type="submit" class="btn-primary text-base px-12 py-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              Kirim Kuesioner
+            </button>
+          </div>
+        </form>
+
+        <!-- Success message (hidden) -->
+        <div id="success-msg" class="hidden card-glass p-12 text-center mt-6">
+          <div class="text-6xl mb-6">🎉</div>
+          <h3 class="text-white text-2xl font-semibold font-serif mb-3">Terima Kasih!</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Jawaban Anda telah dicatat. Kontribusi Anda sangat berarti untuk program edukasi pengelolaan sampah KWN ini.
+          </p>
+          <div class="mt-6 flex items-center justify-center gap-2 text-primary-400 text-sm">
+            <div class="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></div>
+            Data survei diperbarui secara berkala
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Animate stacked bars and regular bars
+  const allBars = document.querySelectorAll('.stacked-bar, .bar-fill');
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const el = e.target as HTMLElement;
+        el.style.width = el.dataset.width || '0%';
+        barObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.2 });
+  allBars.forEach((b) => barObs.observe(b));
+
+  // Radio option styling
+  document.querySelectorAll('.quiz-option input[type="radio"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+      const name = (radio as HTMLInputElement).name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+        const box = r.nextElementSibling as HTMLElement;
+        box?.classList.remove('border-primary-500', 'bg-primary-900/50', 'text-white');
+        box?.classList.add('border-white/10', 'text-gray-400');
+      });
+      const selected = (radio as HTMLInputElement).nextElementSibling as HTMLElement;
+      selected?.classList.add('border-primary-500', 'bg-primary-900/50', 'text-white');
+      selected?.classList.remove('border-white/10', 'text-gray-400');
+    });
+  });
+
+  // Form submit
+  document.getElementById('quiz-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+    const unanswered: string[] = [];
+    for (let i = 1; i <= 20; i++) {
+      if (!data.get(`q${i}`)) unanswered.push(`Pertanyaan ${i}`);
+    }
+    if (unanswered.length > 0) {
+      alert(`Mohon jawab semua pertanyaan!\n\nBelum dijawab: ${unanswered.slice(0, 5).join(', ')}${unanswered.length > 5 ? ', ...' : ''}`);
+      return;
+    }
+    form.classList.add('hidden');
+    document.getElementById('success-msg')?.classList.remove('hidden');
+    window.scrollTo({ top: document.getElementById('success-msg')!.offsetTop - 100, behavior: 'smooth' });
+  });
+
+  // Donut chart — read values from data attributes injected by Astro
+  const canvas = document.getElementById('donut-chart') as HTMLCanvasElement;
+  if (canvas) {
+    const ctx = canvas.getContext('2d')!;
+    const W = canvas.width, H = canvas.height;
+    const cx = W/2, cy = H/2, r = 80, ir = 52;
+    const pct = parseInt(canvas.dataset.pct || '0');
+
+    const realData = [
+      { value: parseInt(canvas.dataset.ss || '0'), color: '#52B788' },
+      { value: parseInt(canvas.dataset.s || '0'), color: '#86efac' },
+      { value: parseInt(canvas.dataset.ts || '0'), color: '#f87171' },
+      { value: parseInt(canvas.dataset.sts || '0'), color: '#dc2626' },
+    ];
+
+    let startAngle = -Math.PI / 2;
+    realData.forEach((slice) => {
+      const angle = (slice.value / 100) * 2 * Math.PI;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, startAngle, startAngle + angle);
+      ctx.closePath();
+      ctx.fillStyle = slice.color;
+      ctx.fill();
+      startAngle += angle;
+    });
+
+    // Center hole
+    ctx.beginPath();
+    ctx.arc(cx, cy, ir, 0, 2 * Math.PI);
+    ctx.fillStyle = '#0f1a14';
+    ctx.fill();
+
+    // Center text
+    ctx.fillStyle = '#86efac';
+    ctx.font = 'bold 26px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(pct + '%', cx, cy - 8);
+    ctx.fillStyle = '#9ca3af';
+    ctx.font = '11px Inter, sans-serif';
+    ctx.fillText('positif', cx, cy + 16);
+  }
+</script>
