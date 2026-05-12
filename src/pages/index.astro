@@ -13,28 +13,28 @@ const stats = [
 const sections = [
   {
     href: '/about',
-    icon: '🌱',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
     title: 'Tentang Program',
     desc: 'Kenali tujuan dan latar belakang program edukasi pengelolaan sampah KWN ini.',
     badge: 'KWN 2026',
   },
   {
     href: '/infographics',
-    icon: '📊',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>',
     title: 'Infografis',
     desc: 'Visualisasi data dan cara pemilahan sampah yang mudah dipahami.',
     badge: 'Edukasi',
   },
   {
     href: '/poster',
-    icon: '🎨',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
     title: 'Poster Edukasi',
     desc: 'Kumpulan poster informatif tentang jenis-jenis sampah dan pengelolaannya.',
     badge: 'Visual',
   },
   {
     href: '/kuesioner',
-    icon: '📋',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
     title: 'Kuesioner',
     desc: 'Ikuti kuesioner dan lihat grafik hasil survei dari 30 responden.',
     badge: 'Survei',
@@ -42,16 +42,15 @@ const sections = [
 ];
 ---
 
-<BaseLayout title="Beranda" description="EcoWijaya — Edukasi pengelolaan sampah untuk Indonesia yang lebih hijau. Program Kewarganegaraan 2026.">
+<BaseLayout title="Beranda" description="Galatea — Edukasi pengelolaan sampah untuk Indonesia yang lebih hijau. Program Kewarganegaraan 2026.">
 
   <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
-  <section class="relative min-h-screen w-full overflow-hidden flex flex-col">
-    <!-- Video Background -->
+  <section class="relative min-h-screen w-full overflow-hidden flex flex-col justify-center bg-[#0f1a14]">
+    <!-- Video Background (Full Screen) -->
     <div class="absolute inset-0 z-0">
       <video
         id="hero-video"
-        class="absolute w-full h-full object-cover"
-        style="top: 200px; bottom: 0; height: calc(100% - 200px);"
+        class="absolute inset-0 w-full h-full object-cover opacity-0"
         muted
         playsinline
         preload="auto"
@@ -59,41 +58,41 @@ const sections = [
         <source src={videoUrl} type="video/mp4" />
       </video>
 
-      <!-- Gradient overlays -->
-      <div class="absolute inset-0 bg-gradient-to-b from-[#0f1a14] via-[#0f1a14]/50 to-[#0f1a14]"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0f1a14]/60 via-transparent to-[#0f1a14]/40"></div>
+      <!-- Gradient overlays for readability -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0f1a14]/80 via-[#0f1a14]/40 to-[#0f1a14]"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0f1a14]/80 via-transparent to-[#0f1a14]/80"></div>
     </div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 pt-32 pb-24">
+    <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-20 pb-24 h-full">
       <!-- Badge -->
-      <div class="section-badge animate-fade-rise mb-8" style="opacity:0">
+      <div class="section-badge mb-8 hero-item opacity-0" style="transform: translateY(20px)">
         <span class="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
         Program Kewarganegaraan 2026
       </div>
 
       <!-- Headline -->
-      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl max-w-5xl leading-[0.95] tracking-tight animate-fade-rise-delay text-white" style="opacity:0;letter-spacing:-2px;">
+      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl max-w-5xl leading-[0.95] tracking-tight text-white hero-item opacity-0" style="letter-spacing:-2px; transform: translateY(30px)">
         Jaga Bumi,
         <span class="gradient-text italic"> Mulai dari</span>
         <br />Sampahmu
       </h1>
 
       <!-- Subheadline -->
-      <p class="text-gray-400 text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay-2" style="opacity:0">
+      <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mt-8 leading-relaxed hero-item opacity-0 font-light" style="transform: translateY(20px)">
         Edukasi pemilahan sampah adalah langkah pertama menuju Indonesia yang lebih bersih dan berkelanjutan.
         Mari belajar bersama dan wujudkan perubahan nyata.
       </p>
 
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center gap-4 mt-12 animate-fade-rise-delay-3" style="opacity:0">
-        <a href="/kuesioner" class="btn-primary">
+      <div class="flex flex-col sm:flex-row items-center gap-4 mt-12 hero-item opacity-0" style="transform: translateY(20px)">
+        <a href="/kuesioner" class="btn-primary hover:scale-105 transition-transform duration-300">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
           </svg>
           Ikuti Kuesioner
         </a>
-        <a href="/infographics" class="btn-outline">
+        <a href="/infographics" class="btn-outline bg-white/5 backdrop-blur-md hover:bg-white/10 hover:scale-105 transition-transform duration-300">
           Lihat Infografis
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -102,33 +101,36 @@ const sections = [
       </div>
 
       <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
-        <span class="text-gray-600 text-xs uppercase tracking-widest">Scroll</span>
-        <div class="w-px h-12 bg-gradient-to-b from-primary-500/50 to-transparent"></div>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-item opacity-0 animate-bounce" style="transform: translateY(20px)">
+        <span class="text-gray-500 text-xs uppercase tracking-widest font-semibold">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-primary-500/80 to-transparent"></div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════ STATS ═══════════════════════════════════ -->
-  <section class="py-24 border-y border-white/5">
-    <div class="section-container">
-      <div class="text-center mb-16" data-aos>
+  <section class="py-32 relative">
+    <div class="absolute inset-0 bg-[#0f1a14] z-0"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-10"></div>
+    
+    <div class="section-container relative z-10">
+      <div class="text-center mb-20 scroll-fade-up opacity-0">
         <span class="section-badge">Fakta & Data</span>
-        <h2 class="section-heading text-white mt-6">Kondisi Sampah <span class="gradient-text italic">Indonesia</span></h2>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Angka-angka yang mendorong kita untuk bertindak sekarang.</p>
+        <h2 class="section-heading text-white mt-6 text-5xl md:text-6xl">Kondisi Sampah <br/><span class="gradient-text italic font-serif">Indonesia</span></h2>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, i) => (
-          <div class="card-glass p-8 text-center group" data-aos data-aos-delay={String(i * 100)}>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="p-8 text-center group scroll-stagger opacity-0 relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div
-              class="stat-num text-4xl lg:text-5xl font-serif font-normal gradient-text mb-3"
+              class="stat-num text-5xl lg:text-6xl font-serif font-normal gradient-text mb-4 tracking-tighter"
               data-target={stat.value}
               data-suffix={stat.suffix}
               data-decimals={stat.decimals}
             >
               0{stat.suffix}
             </div>
-            <p class="text-gray-400 text-sm leading-relaxed">{stat.label}</p>
+            <p class="text-gray-400 text-sm leading-relaxed font-light">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -136,30 +138,31 @@ const sections = [
   </section>
 
   <!-- ═══════════════════════════════════ SECTIONS ═══════════════════════════════════ -->
-  <section class="py-24">
-    <div class="section-container">
-      <div class="text-center mb-16" data-aos>
+  <section class="py-32 relative bg-[#0a110d]">
+    <!-- Minimal grid background -->
+    <div class="absolute inset-0 z-0 opacity-10" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 4rem 4rem; mask-image: radial-gradient(circle at center, black, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);"></div>
+
+    <div class="section-container relative z-10">
+      <div class="text-center mb-20 scroll-fade-up opacity-0">
         <span class="section-badge">Jelajahi</span>
-        <h2 class="section-heading text-white mt-6">Apa yang Ada di <span class="gradient-text italic">EcoWijaya?</span></h2>
+        <h2 class="section-heading text-white mt-6 text-5xl md:text-6xl">Apa yang Ada di <br/><span class="gradient-text italic font-serif">Galatea?</span></h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {sections.map((s, i) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {sections.map((s) => (
           <a
             href={s.href}
-            class="card-glass p-8 group flex gap-6 items-start hover:scale-[1.02] transition-transform duration-300"
-            data-aos
-            data-aos-delay={String(i * 100)}
+            class="group flex flex-col sm:flex-row gap-6 items-start p-8 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md hover:bg-white/[0.05] hover:border-white/10 transition-all duration-500 scroll-stagger opacity-0 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-900/20"
           >
-            <div class="text-4xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">{s.icon}</div>
-            <div>
-              <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-white font-semibold text-xl">{s.title}</h3>
-                <span class="text-xs text-primary-400 bg-primary-900/50 px-2 py-1 rounded-full">{s.badge}</span>
+            <div class="w-12 h-12 text-primary-400 flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 ease-out" set:html={s.icon}></div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <h3 class="text-white font-semibold text-2xl tracking-tight">{s.title}</h3>
+                <span class="text-xs text-primary-300 bg-primary-900/40 border border-primary-800/50 px-3 py-1 rounded-full font-medium">{s.badge}</span>
               </div>
-              <p class="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
-              <div class="flex items-center gap-2 mt-4 text-primary-400 text-sm font-medium group-hover:gap-3 transition-all">
+              <p class="text-gray-400 text-base leading-relaxed font-light">{s.desc}</p>
+              <div class="flex items-center gap-2 mt-6 text-primary-400 text-sm font-medium group-hover:gap-3 transition-all">
                 Lihat selengkapnya
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
@@ -171,30 +174,31 @@ const sections = [
   </section>
 
   <!-- ═══════════════════════════════════ CTA BANNER ═══════════════════════════════════ -->
-  <section class="py-24">
+  <section class="py-32 bg-[#0f1a14]">
     <div class="section-container">
       <div
-        class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-900/80 to-primary-700/30 border border-primary-700/40 p-12 md:p-16 text-center"
-        data-aos
+        class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#132a1f] to-[#0f1a14] border border-primary-800/30 p-12 md:p-20 text-center scroll-scale-up opacity-0"
       >
-        <!-- Decorative circles -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-earth-300/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+        <!-- Decorative blurred circles -->
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-primary-500/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px]"></div>
 
-        <span class="section-badge relative">Ambil Bagian</span>
-        <h2 class="section-heading text-white mt-6 relative">
-          Mulai Perubahan <span class="gradient-text italic">Sekarang</span>
-        </h2>
-        <p class="text-gray-400 mt-4 max-w-xl mx-auto relative">
-          Isi kuesioner kami, lihat hasil survei, dan jadilah bagian dari gerakan pengelolaan sampah yang lebih baik.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 relative">
-          <a href="/kuesioner" class="btn-primary">
-            Ikuti Kuesioner Sekarang
-          </a>
-          <a href="/team" class="btn-outline">
-            Kenali Tim Kami
-          </a>
+        <div class="relative z-10 flex flex-col items-center">
+          <span class="section-badge mb-6">Ambil Bagian</span>
+          <h2 class="section-heading text-white text-5xl md:text-6xl lg:text-7xl">
+            Mulai Perubahan <br/><span class="gradient-text italic font-serif">Sekarang</span>
+          </h2>
+          <p class="text-gray-300 mt-6 max-w-2xl text-lg font-light leading-relaxed">
+            Isi kuesioner kami, pelajari cara memilah sampah yang benar, dan jadilah bagian dari gerakan pengelolaan sampah yang lebih baik.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+            <a href="/kuesioner" class="btn-primary px-8 py-4 text-lg hover:scale-105 transition-transform duration-300">
+              Ikuti Kuesioner
+            </a>
+            <a href="/infographics" class="btn-outline px-8 py-4 text-lg bg-white/5 hover:bg-white/10 hover:scale-105 transition-transform duration-300">
+              Lihat Infografis
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -203,69 +207,88 @@ const sections = [
 </BaseLayout>
 
 <script>
-  // Hero video fade loop
+  import { animate, inView, stagger } from "motion";
+
+  // 1. Hero Animations (Video Fade + Text Stagger)
   const video = document.getElementById('hero-video') as HTMLVideoElement;
-
   if (video) {
-    const FADE_DURATION = 0.5;
-    let animFrame: number;
-
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
-    function tick() {
-      if (!video.duration) { animFrame = requestAnimationFrame(tick); return; }
-      const t = video.currentTime;
-      const d = video.duration;
-
-      if (t < FADE_DURATION) {
-        video.style.opacity = String(Math.min(t / FADE_DURATION, 1));
-      } else if (t > d - FADE_DURATION) {
-        video.style.opacity = String(Math.max((d - t) / FADE_DURATION, 0));
-      } else {
-        video.style.opacity = '1';
-      }
-      animFrame = requestAnimationFrame(tick);
+    // Fade in video smoothly when loaded
+    video.addEventListener('canplaythrough', () => {
+      animate(video, { opacity: 1 }, { duration: 1.5, easing: "ease-out" });
+    });
+    // Fallback if already loaded
+    if (video.readyState >= 3) {
+      animate(video, { opacity: 1 }, { duration: 1.5, easing: "ease-out" });
     }
+    
+    // Auto-loop video smoothly (fade out at end, replay, fade in)
+    const FADE_DURATION = 0.8;
+    setInterval(() => {
+      if (video.duration && video.currentTime > video.duration - FADE_DURATION) {
+        animate(video, { opacity: 0 }, { duration: FADE_DURATION });
+      }
+    }, 100);
 
     video.addEventListener('ended', () => {
-      video.style.opacity = '0';
-      setTimeout(() => {
-        video.currentTime = 0;
-        video.play();
-      }, 100);
+      video.currentTime = 0;
+      video.play();
+      animate(video, { opacity: 1 }, { duration: FADE_DURATION });
     });
-
-    video.style.opacity = '0';
-    video.play().then(() => {
-      animFrame = requestAnimationFrame(tick);
-    }).catch(() => {});
+    
+    video.play().catch(() => {});
   }
 
-  // Stat counters
-  const counters = document.querySelectorAll('[data-target]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target as HTMLElement;
-      const target = parseFloat(el.dataset.target || '0');
-      const suffix = el.dataset.suffix || '';
-      const decimals = parseInt(el.dataset.decimals || '0');
-      const duration = 2000;
-      const start = performance.now();
-
-      function animate(now: number) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = target * eased;
-        el.textContent = current.toFixed(decimals) + suffix;
-        if (progress < 1) requestAnimationFrame(animate);
+  // Animate hero text items on load
+  const heroItems = Array.from(document.querySelectorAll('.hero-item'));
+  if (heroItems.length) {
+    animate(
+      heroItems, 
+      { opacity: 1, y: 0 }, 
+      { 
+        duration: 0.8, 
+        delay: stagger(0.15, { startDelay: 0.2 }),
+        easing: [0.17, 0.55, 0.55, 1] // Custom spring-like curve
       }
+    );
+  }
 
-      requestAnimationFrame(animate);
-      counterObserver.unobserve(el);
+  // 2. Scroll Animations
+  // Fade Up Elements
+  inView('.scroll-fade-up', (element) => {
+    animate(element, { opacity: 1, y: [-40, 0] }, { duration: 0.8, easing: "ease-out" });
+  });
+
+  // Scale Up Element (CTA Banner)
+  inView('.scroll-scale-up', (element) => {
+    animate(element, { opacity: 1, scale: [0.95, 1] }, { duration: 0.8, easing: [0.17, 0.55, 0.55, 1] });
+  });
+
+  // Staggered Grids
+  inView('.grid', (element) => {
+    const items = Array.from(element.querySelectorAll('.scroll-stagger'));
+    if (items.length) {
+      animate(
+        items, 
+        { opacity: 1, y: [-30, 0] }, 
+        { duration: 0.6, delay: stagger(0.1), easing: "ease-out" }
+      );
+    }
+  });
+
+  // 3. Number Counter Animation (using Motion)
+  inView('.stat-num', (element) => {
+    const el = element as HTMLElement;
+    if (!el) return;
+    const target = parseFloat(el.dataset.target || '0');
+    const suffix = el.dataset.suffix || '';
+    const decimals = parseInt(el.dataset.decimals || '0');
+    
+    animate(0, target, {
+      duration: 2,
+      easing: "ease-out",
+      onUpdate: (latest) => {
+        el.textContent = latest.toFixed(decimals) + suffix;
+      }
     });
-  }, { threshold: 0.5 });
-
-  counters.forEach((el) => counterObserver.observe(el));
+  });
 </script>
