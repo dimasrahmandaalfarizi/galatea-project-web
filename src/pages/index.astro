@@ -72,9 +72,9 @@ const sections = [
       </div>
 
       <!-- Headline -->
-      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl max-w-5xl leading-[0.95] tracking-tight text-white hero-item opacity-0" style="letter-spacing:-2px; transform: translateY(30px)">
+      <h1 class="font-bold text-5xl sm:text-7xl md:text-8xl max-w-5xl leading-[0.95] tracking-tight text-white hero-item opacity-0" style="letter-spacing:-2px; transform: translateY(30px)">
         Jaga Bumi,
-        <span class="gradient-text italic"> Mulai dari</span>
+        <span class="text-primary-500"> Mulai dari</span>
         <br />Sampahmu
       </h1>
 
@@ -116,14 +116,14 @@ const sections = [
     <div class="section-container relative z-10">
       <div class="text-center mb-20 scroll-fade-up opacity-0">
         <span class="section-badge">Fakta & Data</span>
-        <h2 class="section-heading text-white mt-6 text-5xl md:text-6xl">Kondisi Sampah <br/><span class="gradient-text italic font-serif">Indonesia</span></h2>
+        <h2 class="section-heading text-white mt-6 text-5xl md:text-6xl">Kondisi Sampah <br/><span class="text-primary-500">Indonesia</span></h2>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <div class="p-8 text-center group scroll-stagger opacity-0 relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl hover:bg-white/[0.04] transition-colors duration-500">
             <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div
-              class="stat-num text-5xl lg:text-6xl font-serif font-normal gradient-text mb-4 tracking-tighter"
+              class="stat-num text-5xl lg:text-6xl font-bold text-primary-400 mb-4 tracking-tighter"
               data-target={stat.value}
               data-suffix={stat.suffix}
               data-decimals={stat.decimals}
@@ -145,13 +145,13 @@ const sections = [
     <div class="section-container relative z-10">
       <div class="text-center mb-20 scroll-fade-up opacity-0">
         <span class="section-badge">Jelajahi</span>
-        <h2 class="section-heading text-white mt-6 text-5xl md:text-6xl">Apa yang Ada di <br/><span class="gradient-text italic font-serif">Galatea?</span></h2>
+        <h2 class="section-heading text-white mt-6 text-5xl md:text-6xl">Apa yang Ada di <br/><span class="text-primary-500">Galatea?</span></h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {sections.map((s) => (
           <a
             href={s.href}
-            class="group flex flex-col sm:flex-row gap-6 items-start p-8 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md hover:bg-white/[0.05] hover:border-white/10 transition-all duration-500 scroll-stagger opacity-0 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-900/20"
+            class="group flex flex-col sm:flex-row gap-6 items-start p-8 rounded-xl border border-white/10 bg-[#111] hover:bg-white/5 transition-all duration-500 scroll-stagger opacity-0 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-900/20"
           >
             <div class="w-12 h-12 text-primary-400 flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 ease-out" set:html={s.icon}></div>
             <div class="flex-1">
@@ -179,14 +179,10 @@ const sections = [
       <div
         class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#132a1f] to-[#0f1a14] border border-primary-800/30 p-12 md:p-20 text-center scroll-scale-up opacity-0"
       >
-        <!-- Decorative blurred circles -->
-        <div class="absolute -top-32 -right-32 w-96 h-96 bg-primary-500/20 rounded-full blur-[100px]"></div>
-        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px]"></div>
-
         <div class="relative z-10 flex flex-col items-center">
           <span class="section-badge mb-6">Ambil Bagian</span>
           <h2 class="section-heading text-white text-5xl md:text-6xl lg:text-7xl">
-            Mulai Perubahan <br/><span class="gradient-text italic font-serif">Sekarang</span>
+            Mulai Perubahan <br/><span class="text-primary-500">Sekarang</span>
           </h2>
           <p class="text-gray-300 mt-6 max-w-2xl text-lg font-light leading-relaxed">
             Isi kuesioner kami, pelajari cara memilah sampah yang benar, dan jadilah bagian dari gerakan pengelolaan sampah yang lebih baik.

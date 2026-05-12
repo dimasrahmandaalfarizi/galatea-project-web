@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const teamMembers = [
   { id: 1, name: 'Nama Anggota 1', role: 'Ketua Tim', bio: 'Bertanggung jawab atas koordinasi program dan pelaksanaan kegiatan KWN secara keseluruhan.', initials: 'A1', color: 'from-primary-600 to-primary-800' },
   { id: 2, name: 'Nama Anggota 2', role: 'Desainer Konten', bio: 'Membuat poster, infografis, dan konten visual untuk media edukasi pengelolaan sampah.', initials: 'A2', color: 'from-blue-600 to-blue-800' },
-  { id: 3, name: 'Nama Anggota 3', role: 'Pengembang Web', bio: 'Merancang dan mengembangkan website EcoWijaya sebagai platform edukasi digital.', initials: 'A3', color: 'from-purple-600 to-purple-800' },
+  { id: 3, name: 'Nama Anggota 3', role: 'Pengembang Web', bio: 'Merancang dan mengembangkan website Galatea sebagai platform edukasi digital.', initials: 'A3', color: 'from-purple-600 to-purple-800' },
   { id: 4, name: 'Nama Anggota 4', role: 'Peneliti & Surveyor', bio: 'Menyusun kuesioner, mengumpulkan data survei, dan menganalisis hasil dari 30 responden.', initials: 'A4', color: 'from-orange-600 to-orange-800' },
   { id: 5, name: 'Nama Anggota 5', role: 'Humas & Dokumentasi', bio: 'Mendokumentasikan setiap kegiatan program dan mengelola komunikasi dengan masyarakat.', initials: 'A5', color: 'from-teal-600 to-teal-800' },
   { id: 6, name: 'Nama Anggota 6', role: 'Koordinator Lapangan', bio: 'Mengkoordinir kegiatan lapangan dan memastikan distribusi materi edukasi berjalan lancar.', initials: 'A6', color: 'from-rose-600 to-rose-800' },
@@ -18,16 +18,16 @@ const roles = [
 ];
 ---
 
-<BaseLayout title="Tim Kami" description="Kenali tim EcoWijaya — kelompok muda yang berdedikasi untuk edukasi pengelolaan sampah Indonesia.">
+<BaseLayout title="Tim Kami" description="Kenali tim Galatea — kelompok muda yang berdedikasi untuk edukasi pengelolaan sampah Indonesia.">
 
   <!-- Hero -->
   <section class="pt-32 pb-12 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <!-- removed glowing background -->
     <div class="section-container relative">
       <div class="max-w-2xl" data-aos>
         <span class="section-badge">Tentang Kami</span>
         <h1 class="section-heading text-white mt-6">
-          Tim <span class="gradient-text italic">Galatea</span>
+          Tim <span class="text-primary-500">Galatea</span>
         </h1>
         <p class="text-gray-400 text-lg mt-4 leading-relaxed">
           Kami adalah kelompok mahasiswa yang peduli lingkungan, bersatu dalam program KWN untuk
@@ -57,7 +57,7 @@ const roles = [
     <div class="section-container">
       <div class="text-center mb-12" data-aos>
         <span class="section-badge">Anggota Tim</span>
-        <h2 class="section-heading text-white mt-6">Kenali <span class="gradient-text italic">Anggota Kami</span></h2>
+        <h2 class="section-heading text-white mt-6">Kenali <span class="text-primary-500">Anggota Kami</span></h2>
         <p class="text-gray-500 mt-4 text-sm">Foto anggota akan segera diperbarui</p>
       </div>
 
@@ -71,7 +71,7 @@ const roles = [
             <!-- Avatar placeholder -->
             <div class={`relative h-48 bg-gradient-to-br ${member.color} flex items-center justify-center`}>
               <div class="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center shadow-xl">
-                <span class="text-white text-3xl font-serif font-normal">{member.initials}</span>
+                <span class="text-white text-3xl font-bold">{member.initials}</span>
               </div>
               <!-- Decorative circles -->
               <div class="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/5 border border-white/10"></div>
@@ -103,7 +103,7 @@ const roles = [
         <h2 class="text-white font-semibold text-2xl mt-6 mb-6">Dosen Pembimbing</h2>
         <div class="card-glass p-8 flex flex-col items-center">
           <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center mb-4 shadow-lg shadow-primary-900/50">
-            <span class="text-white text-3xl font-serif">DP</span>
+            <span class="text-white text-3xl font-bold">DP</span>
           </div>
           <h3 class="text-white font-semibold text-xl mb-1">Nama Dosen Pembimbing</h3>
           <p class="text-primary-400 text-sm mb-4">Mata Kuliah Kewarganegaraan</p>

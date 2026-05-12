@@ -20,15 +20,15 @@ const goals = [
 
   <!-- Hero -->
   <section class="pt-32 pb-16 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <!-- Removed glowing background -->
     <div class="section-container relative">
       <div class="max-w-3xl" data-aos>
         <span class="section-badge">Program KWN</span>
         <h1 class="section-heading text-white mt-6">
-          Tentang <span class="gradient-text italic">EcoWijaya</span>
+          Tentang <span class="text-primary-500">Galatea</span>
         </h1>
         <p class="text-gray-400 text-lg leading-relaxed mt-6">
-          EcoWijaya adalah program edukasi pengelolaan sampah yang merupakan bagian dari tugas
+          Galatea adalah program edukasi pengelolaan sampah yang merupakan bagian dari tugas
           <strong class="text-primary-300">Kewarganegaraan (KWN)</strong>. Program ini dirancang untuk
           meningkatkan kesadaran masyarakat tentang pentingnya pemilahan sampah melalui konten visual,
           survei, dan analisis data yang dapat diimplementasikan secara nyata.
@@ -44,7 +44,7 @@ const goals = [
         <div data-aos>
           <span class="section-badge">Latar Belakang</span>
           <h2 class="section-heading text-white mt-6 text-4xl">
-            Mengapa Pemilahan Sampah Itu <span class="gradient-text italic">Penting?</span>
+            Mengapa Pemilahan Sampah Itu <span class="text-primary-500">Penting?</span>
           </h2>
           <div class="space-y-4 mt-6 text-gray-400 leading-relaxed">
             <p>
@@ -81,7 +81,7 @@ const goals = [
     <div class="section-container">
       <div class="text-center mb-12" data-aos>
         <span class="section-badge">Materi Edukasi</span>
-        <h2 class="section-heading text-white mt-6">3 Jenis Sampah yang <span class="gradient-text italic">Harus Diketahui</span></h2>
+        <h2 class="section-heading text-white mt-6">3 Jenis Sampah yang <span class="text-primary-500">Harus Diketahui</span></h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
@@ -114,7 +114,7 @@ const goals = [
           },
         ].map((type, i) => (
           <div
-            class={`relative overflow-hidden rounded-2xl bg-gradient-to-b ${type.color} border ${type.border} p-8`}
+            class={`relative overflow-hidden rounded-lg bg-[#111] border ${type.border} p-8 hover:bg-white/5 transition-colors`}
             data-aos
             data-aos-delay={String(i * 150)}
           >
@@ -142,7 +142,7 @@ const goals = [
     <div class="section-container">
       <div class="text-center mb-12" data-aos>
         <span class="section-badge">Alur Program</span>
-        <h2 class="section-heading text-white mt-6">Bagaimana Program <span class="gradient-text italic">Berjalan?</span></h2>
+        <h2 class="section-heading text-white mt-6">Bagaimana Program <span class="text-primary-500">Berjalan?</span></h2>
       </div>
       <div class="relative">
         <!-- Line -->
@@ -158,7 +158,7 @@ const goals = [
               <div class="flex-1">
                 <div class={`card-glass p-8 ${i % 2 === 1 ? 'md:text-right' : ''}`}>
                   <div class="text-primary-400 text-sm font-bold uppercase tracking-widest mb-2">Step {item.step}</div>
-                  <h3 class="text-white text-2xl font-semibold font-serif mb-3">{item.title}</h3>
+                  <h3 class="text-white text-2xl font-bold mb-3">{item.title}</h3>
                   <p class="text-gray-400 leading-relaxed">{item.desc}</p>
                 </div>
               </div>

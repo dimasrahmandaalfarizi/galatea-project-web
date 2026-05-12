@@ -17,10 +17,10 @@ const infographics = [
 ];
 
 const wasteSteps = [
-  { num: '1', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', title: 'Pilah di Rumah', desc: 'Sediakan 3 tempat sampah: organik (hijau), anorganik (kuning), dan residu (abu-abu).', color: 'border-green-700/40 bg-green-900/20 shadow-green-900/20' },
-  { num: '2', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>', title: 'Gunakan Wadah Tepat', desc: 'Pastikan setiap wadah tertutup rapat untuk mencegah bau dan penyebaran penyakit.', color: 'border-blue-700/40 bg-blue-900/20 shadow-blue-900/20' },
-  { num: '3', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>', title: 'Kelola Secara Berkala', desc: 'Olah sampah organik menjadi kompos. Setor sampah anorganik ke bank sampah terdekat.', color: 'border-yellow-700/40 bg-yellow-900/20 shadow-yellow-900/20' },
-  { num: '4', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M21 12a9 9 0 1 0-9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M21 21v-5h-5"/></svg>', title: 'Daur Ulang', desc: 'Bawa sampah anorganik bersih ke pengepul atau drop point daur ulang terdekat.', color: 'border-purple-700/40 bg-purple-900/20 shadow-purple-900/20' },
+  { num: '1', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', title: 'Pilah di Rumah', desc: 'Sediakan 3 tempat sampah: organik, anorganik, dan residu.', color: 'border-green-700/40 bg-green-900/20' },
+  { num: '2', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>', title: 'Gunakan Wadah Tepat', desc: 'Pastikan wadah tertutup rapat untuk mencegah bau dan penyakit.', color: 'border-blue-700/40 bg-blue-900/20' },
+  { num: '3', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>', title: 'Kelola Berkala', desc: 'Olah organik jadi kompos, setor anorganik ke bank sampah.', color: 'border-yellow-700/40 bg-yellow-900/20' },
+  { num: '4', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M21 12a9 9 0 1 0-9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M21 21v-5h-5"/></svg>', title: 'Daur Ulang', desc: 'Bawa anorganik bersih ke pengepul atau fasilitas daur ulang.', color: 'border-purple-700/40 bg-purple-900/20' },
 ];
 
 const impacts = [
@@ -30,43 +30,86 @@ const impacts = [
   { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>', title: 'Risiko Kesehatan', pct: 70, color: '#fbbf24', desc: 'Sampah liar menjadi sarang penyakit' },
 ];
 
-const facts = [
-  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="m15 5 4 4"/><path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13"/><path d="m8 6 2-2"/><path d="m2 22 5.5-1.5L21.17 6.83a2.82 2.82 0 0 0-4-4L3.5 16.5Z"/><path d="m18 16 2-2"/><path d="m17 11 4.3 4.3c.94.94.94 2.46 0 3.4l-2.6 2.6c-.94.94-2.46.94-3.4 0L11 17"/></svg>', fact: '1 botol plastik butuh 450 tahun untuk terurai di alam.', source: 'UNEP 2023' },
-  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>', fact: 'Paus ditemukan mati dengan 40kg sampah plastik di perutnya di perairan Indonesia.', source: 'WWF Indonesia' },
-  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>', fact: 'Indonesia peringkat 5 penyumbang sampah plastik terbesar ke lautan dunia.', source: 'Ocean Conservancy' },
-  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M21 12a9 9 0 1 0-9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M21 21v-5h-5"/></svg>', fact: 'Mendaur ulang 1 ton kertas menyelamatkan 17 pohon dan 26.000 liter air.', source: 'KLHK 2023' },
-  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>', fact: 'Sampah yang dipilah dengan baik dapat menghasilkan Rp2-5 juta per bulan dari bank sampah.', source: 'Bank Sampah Nasional' },
-  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>', fact: 'Kompos dari 1 kg sampah organik dapat menyuburkan 5 m² lahan pertanian.', source: 'Kementan RI' },
-];
+let newsItems = [];
+try {
+  const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.cnnindonesia.com/nasional/rss');
+  const data = await res.json();
+  if (data && data.items) {
+    newsItems = data.items.slice(0, 6);
+  }
+} catch (e) {
+  console.error("Gagal mengambil berita:", e);
+}
 ---
 
-<BaseLayout title="Infografis" description="Infografis edukasi pemilahan sampah, komposisi limbah Indonesia, dan langkah pengelolaan yang benar.">
+<BaseLayout title="Data & Berita" description="Infografis edukasi pemilahan sampah dan berita nasional terbaru mengenai lingkungan.">
 
   <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
-  <section class="pt-40 pb-20 relative overflow-hidden bg-[#0f1a14]">
-    <!-- Ambient blurred background -->
-    <div class="absolute top-0 left-1/2 w-[800px] h-[800px] bg-primary-600/20 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 mix-blend-screen opacity-50 hero-ambient"></div>
-    <div class="absolute top-40 right-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[100px] translate-x-1/3 mix-blend-screen opacity-40 hero-ambient"></div>
-
+  <section class="pt-40 pb-20 relative bg-[#0f1a14] border-b border-white/5">
     <div class="section-container relative z-10 text-center">
       <div class="max-w-4xl mx-auto flex flex-col items-center">
-        <span class="section-badge mb-6 hero-item opacity-0">Data & Visual</span>
-        <h1 class="font-serif text-6xl md:text-8xl tracking-tighter text-white hero-item opacity-0 leading-[0.95]">
-          Infografis <br/><span class="gradient-text italic font-serif">Sampah</span>
+        <span class="section-badge mb-6 hero-item opacity-0">Data & Analitik</span>
+        <h1 class="font-bold text-6xl md:text-8xl tracking-tighter text-white hero-item opacity-0 leading-[0.95]">
+          Pusat <span class="text-primary-500">Data</span>
         </h1>
         <p class="text-gray-300 text-lg md:text-xl mt-8 max-w-2xl leading-relaxed font-light hero-item opacity-0">
-          Visualisasi data tentang komposisi sampah Indonesia, langkah pemilahan yang benar, dan dampak lingkungan dari sampah yang tidak terkelola.
+          Visualisasi nyata mengenai komposisi sampah, serta sajian berita nasional dan lingkungan secara real-time dari portal terpercaya.
         </p>
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════ BERITA TERKINI (API) ═══════════════════════════════════ -->
+  <section class="py-24 bg-[#0a110d] border-b border-white/5">
+    <div class="section-container">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 scroll-fade-up opacity-0">
+        <div>
+          <h2 class="text-white font-bold tracking-tight text-4xl md:text-5xl mb-4">Berita <span class="text-primary-500">Terkini</span></h2>
+          <p class="text-gray-400 font-light">Berita nasional ditarik otomatis via API (CNN Indonesia RSS).</p>
+        </div>
+        <div class="mt-6 md:mt-0">
+          <span class="inline-flex items-center gap-2 bg-primary-900/30 border border-primary-500/30 text-primary-400 text-xs px-3 py-1 rounded-md">
+            <span class="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span> Live Update
+          </span>
+        </div>
+      </div>
+
+      {newsItems.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fact-container">
+          {newsItems.map((news) => (
+            <a href={news.link} target="_blank" rel="noopener noreferrer" class="fact-item opacity-0 group flex flex-col rounded-lg border border-white/10 bg-[#111] hover:bg-white/5 transition-all duration-300 overflow-hidden">
+              {news.thumbnail && (
+                <div class="w-full h-48 overflow-hidden bg-[#1a1a1a]">
+                  <img src={news.thumbnail} alt={news.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+              )}
+              <div class="p-6 flex flex-col flex-1">
+                <div class="text-xs text-primary-400 mb-3 font-semibold tracking-wide uppercase">{new Date(news.pubDate.replace(' ', 'T')).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                <h3 class="text-white font-bold text-lg leading-tight mb-4 group-hover:text-primary-400 transition-colors">{news.title}</h3>
+                <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between text-sm text-gray-500">
+                  <span>CNN Indonesia</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="p-12 text-center rounded-lg border border-white/10 bg-[#111]">
+          <p class="text-gray-400">Sedang mengambil berita atau API tidak tersedia saat ini.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════════ BENTO GRID (KOMPOSISI) ═══════════════════════════════════ -->
-  <section class="py-24 bg-[#0a110d] relative">
+  <section class="py-24 bg-[#0a110d] relative border-b border-white/5">
     <div class="section-container relative z-10">
       <div class="mb-16 text-center scroll-fade-up opacity-0">
-        <h2 class="text-white font-serif text-4xl md:text-5xl mb-4">Komposisi Sampah <span class="gradient-text italic">Indonesia</span></h2>
-        <p class="text-gray-400 font-light">Berdasarkan data KLHK 2023. Sebanyak 67 juta ton sampah diproduksi per tahun.</p>
+        <h2 class="text-white font-bold tracking-tight text-4xl md:text-5xl mb-4">Komposisi <span class="text-primary-500">Sampah</span></h2>
+        <p class="text-gray-400 font-light">Data KLHK 2023. Total 67 juta ton sampah diproduksi per tahun di Indonesia.</p>
       </div>
 
       <!-- Bento Grid Layout -->
@@ -74,30 +117,27 @@ const facts = [
         {infographics[0].items.map((item, i) => {
           // Bento Span Logic
           const spanClass = 
-            i === 0 ? "col-span-2 row-span-2 md:col-span-2 md:row-span-2" : // Organik (Largest)
+            i === 0 ? "col-span-2 row-span-2 md:col-span-2 md:row-span-2" : // Organik
             i === 1 ? "col-span-2 row-span-1 md:col-span-2 md:row-span-1" : // Plastik
             i === 2 ? "col-span-1 row-span-1 md:col-span-1 md:row-span-1" : // Kertas
             i === 3 ? "col-span-1 row-span-1 md:col-span-1 md:row-span-1" : // Logam
-            "col-span-2 row-span-1 md:col-span-2 md:row-span-1";            // Lainnya (Wide)
+            "col-span-2 row-span-1 md:col-span-2 md:row-span-1";            // Lainnya
             
           return (
             <div 
-              class={`bento-item opacity-0 relative overflow-hidden rounded-[2rem] p-6 md:p-8 flex flex-col justify-between group border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors duration-500 ${spanClass}`}
+              class={`bento-item opacity-0 relative overflow-hidden rounded-lg p-6 md:p-8 flex flex-col justify-between group border border-white/10 bg-[#111] hover:bg-white/5 transition-colors duration-500 ${spanClass}`}
             >
-              <!-- Subtle gradient overlay based on item color -->
-              <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500" style={`background: radial-gradient(circle at top right, ${item.color}, transparent 70%)`}></div>
-              
               <div class="relative z-10 flex justify-between items-start">
-                <div class="w-12 h-12 md:w-16 md:h-16 drop-shadow-lg group-hover:scale-110 transition-transform duration-500 origin-top-left" style={`color: ${item.color}`} set:html={item.icon}></div>
+                <div class="w-10 h-10 md:w-12 md:h-12 group-hover:scale-110 transition-transform duration-500 origin-top-left" style={`color: ${item.color}`} set:html={item.icon}></div>
                 <div class="text-right">
-                  <div class="text-4xl md:text-5xl font-serif font-bold tracking-tighter" style={`color: ${item.color}`}>
+                  <div class="text-4xl md:text-5xl font-bold tracking-tighter" style={`color: ${item.color}`}>
                     <span class="motion-number" data-target={item.pct}>0</span>%
                   </div>
                 </div>
               </div>
               
               <div class="relative z-10 mt-auto">
-                <h3 class="text-white text-xl md:text-2xl font-semibold tracking-tight mb-1">{item.label}</h3>
+                <h3 class="text-white text-xl md:text-2xl font-bold tracking-tight mb-1">{item.label}</h3>
                 <p class="text-gray-400 text-sm font-light">{item.example}</p>
               </div>
             </div>
@@ -107,32 +147,31 @@ const facts = [
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════ DAMPAK & LANGKAH (NEO BRUTALISM/CARDS) ═══════════════════════════════════ -->
-  <section class="py-24 bg-[#0f1a14] border-t border-white/5">
+  <!-- ═══════════════════════════════════ DAMPAK & LANGKAH ═══════════════════════════════════ -->
+  <section class="py-24 bg-[#0f1a14]">
     <div class="section-container">
       
       <!-- Dampak Lingkungan -->
       <div class="mb-32">
         <div class="text-center mb-16 scroll-fade-up opacity-0">
-          <h2 class="text-white font-serif text-4xl md:text-5xl mb-4">Dampak <span class="text-red-400 italic">Tak Terkelola</span></h2>
-          <p class="text-gray-400 font-light max-w-2xl mx-auto">Sampah yang dibiarkan menumpuk memberikan efek domino yang merusak ekosistem dan kesehatan.</p>
+          <h2 class="text-white font-bold tracking-tight text-4xl md:text-5xl mb-4">Dampak <span class="text-red-400">Kegagalan</span></h2>
+          <p class="text-gray-400 font-light max-w-2xl mx-auto">Efek domino yang dihasilkan ketika manajemen limbah gagal dijalankan dengan benar.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 impact-container">
           {impacts.map((imp) => (
-            <div class="impact-item opacity-0 p-6 md:p-8 rounded-[2rem] border border-white/5 bg-[#132a1f]/30 backdrop-blur-sm flex items-center gap-6 group hover:-translate-y-1 transition-transform duration-500">
-              <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-white/5 shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" style={`color: ${imp.color}`}>
-                <div class="w-8 h-8" set:html={imp.icon}></div>
+            <div class="impact-item opacity-0 p-6 md:p-8 rounded-lg border border-white/10 bg-[#111] flex items-center gap-6 group hover:border-white/20 transition-colors duration-500">
+              <div class="w-14 h-14 rounded-md flex items-center justify-center bg-white/5 shrink-0 group-hover:scale-105 transition-all duration-500" style={`color: ${imp.color}`}>
+                <div class="w-7 h-7" set:html={imp.icon}></div>
               </div>
               <div class="flex-1">
                 <div class="flex justify-between items-center mb-2">
-                  <h3 class="text-white text-xl font-medium">{imp.title}</h3>
-                  <span class="text-2xl font-serif font-bold" style={`color: ${imp.color}`}>
+                  <h3 class="text-white text-lg font-bold">{imp.title}</h3>
+                  <span class="text-xl font-bold" style={`color: ${imp.color}`}>
                     <span class="motion-number" data-target={imp.pct}>0</span>%
                   </span>
                 </div>
-                <!-- Animated Progress Bar -->
-                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mt-3">
+                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden mt-3">
                   <div class="h-full rounded-full motion-bar origin-left" data-target={imp.pct} style={`background-color: ${imp.color}; transform: scaleX(0);`}></div>
                 </div>
                 <p class="text-gray-400 text-sm mt-3 font-light leading-relaxed">{imp.desc}</p>
@@ -145,40 +184,21 @@ const facts = [
       <!-- 4 Langkah Pemilahan -->
       <div>
         <div class="text-center mb-16 scroll-fade-up opacity-0">
-          <span class="section-badge mb-4">Panduan Praktis</span>
-          <h2 class="text-white font-serif text-4xl md:text-5xl mb-4">4 Langkah <span class="gradient-text italic">Mudah</span></h2>
+          <span class="section-badge mb-4">Panduan Ops</span>
+          <h2 class="text-white font-bold tracking-tight text-4xl md:text-5xl mb-4">Prosedur <span class="text-primary-500">Standar</span></h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 step-container">
           {wasteSteps.map((step, i) => (
-            <div class={`step-item opacity-0 relative rounded-[2rem] border p-8 ${step.color} group shadow-xl hover:-translate-y-2 transition-all duration-500`}>
-              <div class="w-12 h-12 mb-6 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 origin-bottom-left text-white" set:html={step.icon}></div>
-              <h3 class="text-white font-semibold text-xl mb-3 tracking-tight">{step.num}. {step.title}</h3>
-              <p class="text-gray-300 text-sm leading-relaxed font-light">{step.desc}</p>
+            <div class={`step-item opacity-0 relative rounded-lg border border-white/10 bg-[#111] p-6 group hover:border-white/20 transition-all duration-500`}>
+              <div class="w-10 h-10 mb-6 text-primary-400 group-hover:scale-105 transition-transform duration-500 origin-bottom-left" set:html={step.icon}></div>
+              <h3 class="text-white font-bold text-lg mb-2 tracking-tight">{step.num}. {step.title}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed font-light">{step.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ FAKTA CEPAT (MASONRY-LIKE) ═══════════════════════════════════ -->
-  <section class="py-24 bg-[#0a110d]">
-    <div class="section-container">
-      <div class="text-center mb-16 scroll-fade-up opacity-0">
-        <h2 class="text-white font-serif text-4xl md:text-5xl mb-4">Fakta <span class="gradient-text italic">Mengejutkan</span></h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fact-container">
-        {facts.map((f) => (
-          <div class="fact-item opacity-0 p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-500 flex flex-col h-full">
-            <div class="w-10 h-10 mb-6 text-primary-400" set:html={f.icon}></div>
-            <p class="text-gray-300 leading-relaxed font-light text-lg mb-6 flex-1">{f.fact}</p>
-            <div class="w-8 h-px bg-primary-500/50 mb-4"></div>
-            <span class="text-xs text-primary-400 font-medium tracking-wide uppercase">{f.source}</span>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -192,22 +212,12 @@ const facts = [
   if (heroItems.length) {
     animate(
       heroItems,
-      { opacity: 1, y: [-40, 0] },
+      { opacity: 1, y: [-20, 0] },
       { 
-        duration: 1, 
-        delay: stagger(0.15, { startDelay: 0.1 }),
+        duration: 0.8, 
+        delay: stagger(0.1, { startDelay: 0.1 }),
         easing: [0.17, 0.55, 0.55, 1]
       }
-    );
-  }
-
-  // Hero Ambient floating
-  const ambients = Array.from(document.querySelectorAll('.hero-ambient'));
-  if (ambients.length) {
-    animate(
-      ambients,
-      { rotate: 360, scale: [1, 1.1, 1] },
-      { duration: 20, repeat: Infinity, easing: "linear" }
     );
   }
 
@@ -217,10 +227,10 @@ const facts = [
     if (items.length) {
       animate(
         items,
-        { opacity: 1, scale: [0.9, 1] },
+        { opacity: 1, scale: [0.95, 1] },
         { 
-          duration: 0.8, 
-          delay: stagger(0.1),
+          duration: 0.6, 
+          delay: stagger(0.05),
           easing: [0.17, 0.55, 0.55, 1] 
         }
       );
@@ -233,12 +243,11 @@ const facts = [
     if (items.length) {
       animate(
         items,
-        { opacity: 1, x: [-30, 0] },
-        { duration: 0.8, delay: stagger(0.15), easing: "ease-out" }
+        { opacity: 1, y: [20, 0] },
+        { duration: 0.6, delay: stagger(0.1), easing: "ease-out" }
       );
     }
 
-    // Animate bars
     const bars = Array.from(element.querySelectorAll('.motion-bar'));
     bars.forEach((bar, index) => {
       const el = bar as HTMLElement;
@@ -246,7 +255,7 @@ const facts = [
       animate(
         el,
         { transform: `scaleX(${pct / 100})` },
-        { duration: 1.5, delay: 0.5 + (index * 0.1), easing: [0.17, 0.55, 0.55, 1] }
+        { duration: 1.2, delay: 0.4 + (index * 0.1), easing: [0.17, 0.55, 0.55, 1] }
       );
     });
   });
@@ -257,38 +266,37 @@ const facts = [
     if (items.length) {
       animate(
         items,
-        { opacity: 1, y: [40, 0] },
-        { duration: 0.8, delay: stagger(0.1), easing: [0.17, 0.55, 0.55, 1] }
+        { opacity: 1, y: [20, 0] },
+        { duration: 0.6, delay: stagger(0.1), easing: [0.17, 0.55, 0.55, 1] }
       );
     }
   });
 
-  // 5. Fact Cards
+  // 5. Fact/News Cards
   inView('.fact-container', (element) => {
     const items = Array.from(element.querySelectorAll('.fact-item'));
     if (items.length) {
       animate(
         items,
-        { opacity: 1, y: [30, 0] },
-        { duration: 0.8, delay: stagger(0.1), easing: "ease-out" }
+        { opacity: 1, y: [20, 0] },
+        { duration: 0.6, delay: stagger(0.1), easing: "ease-out" }
       );
     }
   });
 
   // 6. Generic Scroll Fade Up
   inView('.scroll-fade-up', (element) => {
-    animate(element, { opacity: 1, y: [-30, 0] }, { duration: 0.8, easing: "ease-out" });
+    animate(element, { opacity: 1, y: [-20, 0] }, { duration: 0.6, easing: "ease-out" });
   });
 
   // 7. Motion Numbers
-  // Small timeout to ensure DOM is ready and target attribute is readable
   setTimeout(() => {
     document.querySelectorAll('.motion-number').forEach(el => {
       inView(el, (element) => {
         const target = parseFloat((element as HTMLElement).dataset.target || '0');
         animate(0, target, {
-          duration: 2,
-          delay: 0.3,
+          duration: 1.5,
+          delay: 0.2,
           easing: "ease-out",
           onUpdate: (latest) => {
             element.textContent = Math.round(latest).toString();

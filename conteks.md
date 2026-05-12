@@ -1,0 +1,3 @@
+@Brainstorm, @uiuxpromax, kalian buat plan dan bagi tugas, 
+1. pada bagian infografis aku mau ambil data dari interneti jadi cari data yang terpercaya dan terbaru, kemudian buat infografis yang interaktif mungkin cari api open source dari internet tentang berita berita terkait dengan tema.
+2. aku mau kamu update keseluruhan uinya, pemilihan warnanya jangan sampe AI-SLOP, pokoknya kalian sesuaikan lagi, dan fotnnya yang konsisten jangan pake style yang berbeda-beda. 
