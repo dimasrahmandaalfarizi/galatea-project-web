@@ -9,10 +9,10 @@ const timeline = [
 ];
 
 const goals = [
-  { icon: '♻️', title: 'Meningkatkan Kesadaran', desc: 'Meningkatkan pemahaman masyarakat tentang pentingnya pemilahan sampah sejak sumber.' },
-  { icon: '📉', title: 'Mengurangi Sampah TPA', desc: 'Mengurangi volume sampah yang masuk ke Tempat Pembuangan Akhir melalui pemilahan yang benar.' },
-  { icon: '💚', title: 'Lingkungan Lebih Sehat', desc: 'Menciptakan lingkungan yang lebih bersih, sehat, dan layak huni bagi seluruh warga.' },
-  { icon: '📊', title: 'Data Berbasis Bukti', desc: 'Menghasilkan data empiris sebagai tolak ukur keberhasilan program dan dasar kebijakan selanjutnya.' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', title: 'Meningkatkan Kesadaran', desc: 'Meningkatkan pemahaman masyarakat tentang pentingnya pemilahan sampah sejak sumber.' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>', title: 'Mengurangi Sampah TPA', desc: 'Mengurangi volume sampah yang masuk ke Tempat Pembuangan Akhir melalui pemilahan yang benar.' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>', title: 'Lingkungan Lebih Sehat', desc: 'Menciptakan lingkungan yang lebih bersih, sehat, dan layak huni bagi seluruh warga.' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>', title: 'Data Berbasis Bukti', desc: 'Menghasilkan data empiris sebagai tolak ukur keberhasilan program dan dasar kebijakan selanjutnya.' },
 ];
 ---
 
@@ -66,7 +66,7 @@ const goals = [
         <div class="grid grid-cols-2 gap-4" data-aos data-aos-delay="200">
           {goals.map((g) => (
             <div class="card-glass p-6">
-              <div class="text-3xl mb-4">{g.icon}</div>
+              <div class="w-8 h-8 mb-4 text-primary-400" set:html={g.icon}></div>
               <h3 class="text-white font-semibold mb-2">{g.title}</h3>
               <p class="text-gray-500 text-sm leading-relaxed">{g.desc}</p>
             </div>
@@ -89,7 +89,7 @@ const goals = [
             color: 'from-green-900/50 to-green-800/20',
             border: 'border-green-700/40',
             dot: 'bg-green-500',
-            emoji: '🌿',
+            emoji: '<svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
             title: 'Sampah Organik',
             examples: ['Sisa makanan', 'Daun & ranting', 'Sayur & buah busuk', 'Ampas kopi/teh'],
             tip: 'Bisa diolah menjadi kompos untuk pupuk tanaman.',
@@ -98,7 +98,7 @@ const goals = [
             color: 'from-blue-900/50 to-blue-800/20',
             border: 'border-blue-700/40',
             dot: 'bg-blue-500',
-            emoji: '♻️',
+            emoji: '<svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10.2Z"/><path d="M17 21v-7a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v7"/></svg>',
             title: 'Sampah Anorganik',
             examples: ['Plastik & botol', 'Kertas & karton', 'Kaleng & logam', 'Kaca & beling'],
             tip: 'Dapat didaur ulang — pisahkan dari sampah organik.',
@@ -107,7 +107,7 @@ const goals = [
             color: 'from-red-900/50 to-red-800/20',
             border: 'border-red-700/40',
             dot: 'bg-red-500',
-            emoji: '⚠️',
+            emoji: '<svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-5.16-5.16a2 2 0 0 0-2.83 0l-5.17 5.17a2 2 0 0 0 0 2.83l5.17 5.17a2 2 0 0 0 2.83 0L21 18.84V16Z"/><path d="m2 16 5.16-5.16a2 2 0 0 1 2.83 0l5.17 5.17a2 2 0 0 1 0 2.83l-5.17 5.17a2 2 0 0 1-2.83 0L2 18.84V16Z"/></svg>',
             title: 'Sampah B3',
             examples: ['Baterai bekas', 'Lampu neon', 'Obat kedaluwarsa', 'Cat & solvent'],
             tip: 'Berbahaya — antar ke tempat pengumpulan B3 khusus.',
@@ -118,7 +118,7 @@ const goals = [
             data-aos
             data-aos-delay={String(i * 150)}
           >
-            <div class="text-4xl mb-4">{type.emoji}</div>
+            <div class="mb-6 text-primary-400" set:html={type.emoji}></div>
             <h3 class="text-white font-semibold text-xl mb-4">{type.title}</h3>
             <ul class="space-y-2 mb-6">
               {type.examples.map((ex) => (
@@ -129,7 +129,7 @@ const goals = [
               ))}
             </ul>
             <div class={`bg-white/5 rounded-xl p-4 border ${type.border}`}>
-              <p class="text-gray-300 text-sm leading-relaxed">💡 {type.tip}</p>
+              <p class="text-gray-300 text-sm leading-relaxed"><span class="font-semibold text-white">Catatan:</span> {type.tip}</p>
             </div>
           </div>
         ))}

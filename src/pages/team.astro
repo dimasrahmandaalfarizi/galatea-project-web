@@ -11,10 +11,10 @@ const teamMembers = [
 ];
 
 const roles = [
-  { icon: '🎯', title: 'Ketua Tim', desc: 'Koordinasi dan perencanaan program secara menyeluruh' },
-  { icon: '🎨', title: 'Desainer', desc: 'Produksi konten visual dan materi edukasi' },
-  { icon: '💻', title: 'Pengembang', desc: 'Pengembangan platform digital EcoWijaya' },
-  { icon: '📊', title: 'Peneliti', desc: 'Pengumpulan dan analisis data survei' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>', title: 'Ketua Tim', desc: 'Koordinasi dan perencanaan program secara menyeluruh' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7 7 7-7 7z"/><path d="m19 12-7 7-7-7"/></svg>', title: 'Desainer', desc: 'Produksi konten visual dan materi edukasi' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>', title: 'Pengembang', desc: 'Pengembangan platform digital Galatea' },
+  { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>', title: 'Peneliti', desc: 'Pengumpulan dan analisis data survei' },
 ];
 ---
 
@@ -27,7 +27,7 @@ const roles = [
       <div class="max-w-2xl" data-aos>
         <span class="section-badge">Tentang Kami</span>
         <h1 class="section-heading text-white mt-6">
-          Tim <span class="gradient-text italic">EcoWijaya</span>
+          Tim <span class="gradient-text italic">Galatea</span>
         </h1>
         <p class="text-gray-400 text-lg mt-4 leading-relaxed">
           Kami adalah kelompok mahasiswa yang peduli lingkungan, bersatu dalam program KWN untuk
@@ -43,7 +43,7 @@ const roles = [
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         {roles.map((role, i) => (
           <div class="card-glass p-6 text-center" data-aos data-aos-delay={String(i * 100)}>
-            <div class="text-3xl mb-3">{role.icon}</div>
+            <div class="w-8 h-8 mb-4 mx-auto text-primary-400" set:html={role.icon}></div>
             <h3 class="text-white font-semibold mb-1">{role.title}</h3>
             <p class="text-gray-500 text-xs leading-relaxed">{role.desc}</p>
           </div>
