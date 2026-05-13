@@ -300,6 +300,7 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
 </BaseLayout>
 
 <script>
+  // @ts-nocheck
   // Animate stacked bars and regular bars
   const allBars = document.querySelectorAll('.stacked-bar, .bar-fill');
   const barObs = new IntersectionObserver((entries) => {
