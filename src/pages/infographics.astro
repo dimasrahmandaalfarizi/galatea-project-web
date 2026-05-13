@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Parser from 'rss-parser';
 
 const infographics = [
   {
@@ -32,10 +33,29 @@ const impacts = [
 
 let newsItems = [];
 try {
-  const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.cnnindonesia.com/nasional/rss');
-  const data = await res.json();
-  if (data && data.items) {
-    newsItems = data.items.slice(0, 6);
+  const parser = new Parser({
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+    }
+  });
+  const feed = await parser.parseURL('https://www.mongabay.co.id/feed/');
+  if (feed && feed.items) {
+    newsItems = feed.items.slice(0, 6).map(item => {
+      let thumbnail = null;
+      if (item.enclosure && item.enclosure.url) {
+        thumbnail = item.enclosure.url;
+      } else {
+        const imgMatch = (item['content:encoded'] || item.content || '').match(/<img[^>]+src="([^">]+)"/);
+        if (imgMatch) thumbnail = imgMatch[1];
+      }
+      return {
+        title: item.title,
+        link: item.link,
+        pubDate: new Date(item.pubDate).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+        thumbnail: thumbnail,
+        source: 'Mongabay Indonesia'
+      };
+    });
   }
 } catch (e) {
   console.error("Gagal mengambil berita:", e);
@@ -65,7 +85,7 @@ try {
       <div class="flex flex-col md:flex-row justify-between items-end mb-16 scroll-fade-up opacity-0">
         <div>
           <h2 class="text-white font-bold tracking-tight text-4xl md:text-5xl mb-4">Berita <span class="text-primary-500">Terkini</span></h2>
-          <p class="text-gray-400 font-light">Berita nasional ditarik otomatis via API (CNN Indonesia RSS).</p>
+          <p class="text-gray-400 font-light">Kabar terbaru perlindungan lingkungan ditarik langsung via API (Mongabay Indonesia).</p>
         </div>
         <div class="mt-6 md:mt-0">
           <span class="inline-flex items-center gap-2 bg-primary-900/30 border border-primary-500/30 text-primary-400 text-xs px-3 py-1 rounded-md">
@@ -84,10 +104,10 @@ try {
                 </div>
               )}
               <div class="p-6 flex flex-col flex-1">
-                <div class="text-xs text-primary-400 mb-3 font-semibold tracking-wide uppercase">{new Date(news.pubDate.replace(' ', 'T')).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                <div class="text-xs text-primary-400 mb-3 font-semibold tracking-wide uppercase">{news.pubDate}</div>
                 <h3 class="text-white font-bold text-lg leading-tight mb-4 group-hover:text-primary-400 transition-colors">{news.title}</h3>
                 <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between text-sm text-gray-500">
-                  <span>CNN Indonesia</span>
+                  <span>{news.source}</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
