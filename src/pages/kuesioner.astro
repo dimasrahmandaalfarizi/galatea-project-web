@@ -290,7 +290,7 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
           </p>
           <div class="mt-6 flex items-center justify-center gap-2 text-primary-400 text-sm">
             <div class="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></div>
-            Data survei diperbarui secara berkala
+            Data survei berhasil diunduh ke perangkat Anda.
           </div>
         </div>
       </div>
@@ -344,6 +344,24 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
     form.classList.add('hidden');
     document.getElementById('success-msg')?.classList.remove('hidden');
     window.scrollTo({ top: document.getElementById('success-msg')!.offsetTop - 100, behavior: 'smooth' });
+
+    // Format data untuk di-download ke CSV
+    let csvContent = "Pertanyaan,Jawaban\n";
+    for (let i = 1; i <= 20; i++) {
+      const qText = document.querySelector(`#q${i} p`)?.textContent?.replace(/^\d+\.\s*/, '').trim() || `Pertanyaan ${i}`;
+      // Wrap in quotes to avoid comma issues in CSV
+      csvContent += `"${qText}","${data.get(`q${i}`)}"\n`;
+    }
+    csvContent += `\nWaktu Submit,"${new Date().toLocaleString('id-ID')}"\n`;
+
+    // Buat file CSV dan trigger download otomatis
+    const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "hasil_kuesioner_galatea.csv");
+    document.body.appendChild(downloadAnchorNode); // Diperlukan untuk Firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
   });
 
   // Donut chart — read values from data attributes injected by Astro
