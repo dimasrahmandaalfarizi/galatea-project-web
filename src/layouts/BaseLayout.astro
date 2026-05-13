@@ -52,8 +52,6 @@ const currentPath = Astro.url.pathname;
               { href: '/about', label: 'Tentang' },
               { href: '/poster', label: 'Poster' },
               { href: '/infographics', label: 'Infografis' },
-              { href: '/team', label: 'Tim' },
-              { href: '/gallery', label: 'Galeri' },
             ].map(({ href, label }) => (
               <a
                 href={href}
@@ -97,8 +95,6 @@ const currentPath = Astro.url.pathname;
             { href: '/about', label: 'Tentang' },
             { href: '/poster', label: 'Poster' },
             { href: '/infographics', label: 'Infografis' },
-            { href: '/team', label: 'Tim' },
-            { href: '/gallery', label: 'Galeri' },
             { href: '/kuesioner', label: 'Kuesioner' },
           ].map(({ href, label }) => (
             <a href={href} class={`text-lg ${currentPath === href ? 'text-primary-400' : 'text-gray-300'} hover:text-white transition-colors`}>
