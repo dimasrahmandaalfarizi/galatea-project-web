@@ -1,0 +1,12 @@
+{
+  "title": "Produksi Sampah di Asia Tenggara (Juta Ton/Tahun)",
+  "source": "Estimasi Berbagai Sumber & Laporan Global",
+  "data": [
+    { "country": "Indonesia", "tons": 68.5, "color": "#f87171" },
+    { "country": "Thailand", "tons": 27.8, "color": "#fbbf24" },
+    { "country": "Vietnam", "tons": 25.0, "color": "#34d399" },
+    { "country": "Filipina", "tons": 14.6, "color": "#60a5fa" },
+    { "country": "Malaysia", "tons": 13.9, "color": "#a78bfa" },
+    { "country": "Singapura", "tons": 7.3, "color": "#e879f9" }
+  ]
+}
