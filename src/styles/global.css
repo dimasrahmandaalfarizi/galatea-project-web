@@ -22,15 +22,13 @@
     overflow-x: hidden;
   }
 
+  /* Hide scrollbar completely */
   ::-webkit-scrollbar {
-    width: 6px;
+    display: none;
   }
-  ::-webkit-scrollbar-track {
-    background: #0f1a14;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #2D6A4F;
-    border-radius: 3px;
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
   }
 }
 
