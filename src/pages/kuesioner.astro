@@ -303,16 +303,30 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
           </div>
         </form>
 
-        <!-- Success message (hidden) -->
-        <div id="success-msg" class="hidden card-glass p-12 text-center mt-6">
-          <div class="w-16 h-16 mx-auto mb-6 text-green-400"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <h3 class="text-white text-2xl font-bold mb-3">Terima Kasih!</h3>
-          <p class="text-gray-400 leading-relaxed">
-            Jawaban Anda telah dicatat. Kontribusi Anda sangat berarti untuk program edukasi pengelolaan sampah KWN ini.
-          </p>
-          <div class="mt-6 flex items-center justify-center gap-2 text-primary-400 text-sm">
-            <div class="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></div>
-            Data survei berhasil diunduh ke perangkat Anda.
+        <!-- Result/Gamification Message -->
+        <div id="success-msg" class="hidden text-center py-8 scroll-fade-up">
+          <div class="card-glass max-w-xl mx-auto p-10 border border-primary-500/30 shadow-[0_0_50px_rgba(45,106,79,0.2)]">
+            <div class="w-24 h-24 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary-500/40 relative">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white relative z-10">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              <div class="absolute inset-0 rounded-full border-4 border-primary-300 animate-ping opacity-20"></div>
+            </div>
+            
+            <span class="text-sm font-mono text-primary-400 uppercase tracking-widest mb-2 block">Skor Kesadaran Anda</span>
+            <div class="text-6xl md:text-7xl font-bold text-white mb-2" id="result-score">0</div>
+            <h3 class="text-white font-bold text-2xl md:text-3xl mb-4" id="result-title">Eco Warrior</h3>
+            <p class="text-gray-400 font-light max-w-lg mx-auto mb-8 leading-relaxed" id="result-desc">Luar biasa! Pemahaman Anda mengenai pengelolaan sampah patut diacungi jempol. Mari sebarkan semangat ini.</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="/" class="btn-primary w-full sm:w-auto text-sm py-3 px-6">
+                Kembali ke Beranda
+              </a>
+              <button id="btn-download-backup" class="w-full sm:w-auto border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium py-3 px-6 rounded-lg transition-colors text-sm flex items-center justify-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Unduh CSV
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -322,7 +336,17 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
 </BaseLayout>
 
 <script>
+import { createClient } from '@supabase/supabase-js';
+
   // @ts-nocheck
+  
+  // Setup Supabase
+  const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+  const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+  const supabase = (supabaseUrl && supabaseAnonKey && supabaseAnonKey !== 'ganti_dengan_anon_key_anda') 
+    ? createClient(supabaseUrl, supabaseAnonKey) 
+    : null;
+
   // Animate stacked bars and regular bars
   const allBars = document.querySelectorAll('.stacked-bar, .bar-fill');
   const barObs = new IntersectionObserver((entries) => {
@@ -417,7 +441,7 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
   updateSlider();
 
   // Form submit
-  document.getElementById('quiz-form')?.addEventListener('submit', (e) => {
+  document.getElementById('quiz-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     // Validasi pertanyaan terakhir
@@ -431,27 +455,94 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
     const form = e.target as HTMLFormElement;
     const data = new FormData(form);
     
-    form.classList.add('hidden');
-    document.getElementById('success-msg')?.classList.remove('hidden');
-    window.scrollTo({ top: document.getElementById('success-msg')!.offsetTop - 100, behavior: 'smooth' });
-
-    // Format data untuk di-download ke CSV
-    let csvContent = "Pertanyaan,Jawaban\n";
+    // 1. Kalkulasi Skor
+    let totalScore = 0;
+    const answersData = {};
     for (let i = 1; i <= totalSlides; i++) {
-      const slide = document.getElementById(`slide-${i-1}`);
-      const qText = slide?.querySelector('p')?.textContent?.replace(/Pertanyaan \d+\.\s*/, '').trim() || `Pertanyaan ${i}`;
-      csvContent += `"${qText}","${data.get(`q${i}`)}"\n`;
+      const val = data.get(`q${i}`);
+      answersData[`q${i}`] = val;
+      
+      if (val === 'Sangat Setuju' || val === 'Selalu') totalScore += 5;
+      else if (val === 'Setuju' || val === 'Sering') totalScore += 4;
+      else if (val === 'Tidak Setuju' || val === 'Jarang') totalScore += 2;
+      else if (val === 'Sangat Tidak Setuju' || val === 'Tidak Pernah') totalScore += 1;
+      else totalScore += 3;
     }
-    csvContent += `\nWaktu Submit,"${new Date().toLocaleString('id-ID')}"\n`;
+    
+    // Normalisasi ke 100
+    const maxPossible = totalSlides * 5;
+    const finalScore = Math.round((totalScore / maxPossible) * 100);
+    
+    // Tentukan Predikat
+    let predikat = "";
+    let desc = "";
+    if (finalScore >= 80) {
+      predikat = "Earth Defender 🌍";
+      desc = "Luar biasa! Pemahaman Anda mengenai pengelolaan sampah patut diacungi jempol. Mari terus pertahankan dan sebarkan semangat ini!";
+    } else if (finalScore >= 60) {
+      predikat = "Eco Warrior 🌿";
+      desc = "Bagus sekali! Anda sudah cukup sadar lingkungan, meski masih ada beberapa praktik pemilahan yang bisa ditingkatkan.";
+    } else {
+      predikat = "Green Rookie 🌱";
+      desc = "Ini adalah awal yang baik. Mari lebih banyak belajar mengenai manajemen limbah untuk menyelamatkan bumi kita.";
+    }
 
-    // Buat file CSV dan trigger download otomatis
-    const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "hasil_kuesioner_galatea.csv");
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
+    const submitBtn = document.getElementById('btn-submit');
+    if(submitBtn) {
+      submitBtn.innerHTML = 'Menyimpan...';
+      submitBtn.setAttribute('disabled', 'true');
+    }
+
+    // 2. Simpan ke Supabase
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('kuesioner_responses').insert([
+          { skor: finalScore, predikat: predikat, data_jawaban: answersData }
+        ]);
+        if (error) console.error("Error saving to Supabase:", error);
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      console.warn("Supabase belum dikonfigurasi. Data hanya diproses lokal.");
+    }
+
+    // 3. Tampilkan UI Gamifikasi
+    const scoreEl = document.getElementById('result-score');
+    if(scoreEl) scoreEl.textContent = finalScore.toString();
+    const titleEl = document.getElementById('result-title');
+    if(titleEl) titleEl.textContent = predikat;
+    const descEl = document.getElementById('result-desc');
+    if(descEl) descEl.textContent = desc;
+
+    form.classList.add('hidden');
+    const successMsg = document.getElementById('success-msg');
+    if(successMsg) {
+      successMsg.classList.remove('hidden');
+      window.scrollTo({ top: successMsg.offsetTop - 100, behavior: 'smooth' });
+    }
+
+    // 4. Fungsi tombol CSV Backup
+    const btnCsv = document.getElementById('btn-download-backup');
+    if (btnCsv) {
+      btnCsv.addEventListener('click', () => {
+        let csvContent = "Pertanyaan,Jawaban\n";
+        for (let i = 1; i <= totalSlides; i++) {
+          const slide = document.getElementById(`slide-${i-1}`);
+          const qText = slide?.querySelector('p')?.textContent?.replace(/Pertanyaan \d+\.\s*/, '').trim() || `Pertanyaan ${i}`;
+          csvContent += `"${qText}","${answersData[`q${i}`]}"\n`;
+        }
+        csvContent += `\nSkor Akhir,"${finalScore}"\n`;
+        csvContent += `Predikat,"${predikat}"\n`;
+        csvContent += `Waktu Submit,"${new Date().toLocaleString('id-ID')}"\n`;
+
+        const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
+        const a = document.createElement('a');
+        a.href = dataStr;
+        a.download = "hasil_kuesioner_galatea.csv";
+        a.click();
+      });
+    }
   });
 
   // Donut chart — read values from data attributes injected by Astro
