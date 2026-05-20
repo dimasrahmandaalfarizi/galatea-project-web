@@ -198,6 +198,80 @@ const posters = [
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════ MATERI PRESENTASI (PPT) ═══════════════════════════════════ -->
+  <section class="py-16 bg-[#0a110d] relative border-t border-white/5">
+    <div class="section-container relative z-10">
+      <div class="mb-16 text-center" data-aos>
+        <span class="section-badge mb-4">Materi Edukasi</span>
+        <h2 class="text-white font-bold tracking-tight text-4xl md:text-5xl mb-4">Slide <span class="text-primary-500">Presentasi</span></h2>
+        <p class="text-gray-400 font-light max-w-2xl mx-auto">Materi presentasi komprehensif mengenai pengelolaan sampah. Geser untuk membaca selengkapnya.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- PPT 1 -->
+        <div class="ppt-container bg-[#111] border border-white/10 rounded-xl p-4 md:p-6" data-aos>
+          <h3 class="text-white font-bold text-lg md:text-xl mb-4 flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary-500"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Modul Dasar Pemilahan
+          </h3>
+          <div class="relative w-full aspect-[4/3] sm:aspect-video bg-black rounded-lg overflow-hidden group">
+            <div class="ppt-slider flex transition-transform duration-500 ease-in-out h-full" id="slider-ppt1">
+              {[1,2,3,4,5,6,7,8,9,10].map((num) => (
+                <div class="w-full h-full flex-shrink-0">
+                  <img src={`/posters/PPT1/extracted/${num}.png`} alt={`Slide ${num}`} class="w-full h-full object-contain bg-black" loading="lazy" />
+                </div>
+              ))}
+            </div>
+            
+            <!-- Controls -->
+            <button class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary-600 backdrop-blur-sm btn-prev border border-white/10" data-target="slider-ppt1" data-total="10">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary-600 backdrop-blur-sm btn-next border border-white/10" data-target="slider-ppt1" data-total="10">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            
+            <!-- Indicator -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-full text-xs text-white border border-white/10 indicator-text font-medium" id="ind-slider-ppt1">
+              1 / 10
+            </div>
+          </div>
+        </div>
+
+        <!-- PPT 2 -->
+        <div class="ppt-container bg-[#111] border border-white/10 rounded-xl p-4 md:p-6" data-aos data-aos-delay="100">
+          <h3 class="text-white font-bold text-lg md:text-xl mb-4 flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary-500"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Panduan Daur Ulang
+          </h3>
+          <div class="relative w-full aspect-[4/3] sm:aspect-video bg-black rounded-lg overflow-hidden group">
+            <div class="ppt-slider flex transition-transform duration-500 ease-in-out h-full" id="slider-ppt2">
+              {[1,2,3,4,5,6,7,8,9,10].map((num) => (
+                <div class="w-full h-full flex-shrink-0">
+                  <img src={`/posters/PPT2/extracted/${num}.png`} alt={`Slide ${num}`} class="w-full h-full object-contain bg-black" loading="lazy" />
+                </div>
+              ))}
+            </div>
+            
+            <!-- Controls -->
+            <button class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary-600 backdrop-blur-sm btn-prev border border-white/10" data-target="slider-ppt2" data-total="10">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary-600 backdrop-blur-sm btn-next border border-white/10" data-target="slider-ppt2" data-total="10">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            
+            <!-- Indicator -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-full text-xs text-white border border-white/10 indicator-text font-medium" id="ind-slider-ppt2">
+              1 / 10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 </BaseLayout>
 
 <style>
@@ -236,6 +310,32 @@ const posters = [
           card.classList.add('hidden-filter');
         }
       });
+    });
+  });
+
+  // PPT Sliders
+  const pptSliders = {};
+  document.querySelectorAll('.btn-prev, .btn-next').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const targetId = btn.getAttribute('data-target');
+      const total = parseInt(btn.getAttribute('data-total') || '10');
+      if (pptSliders[targetId] === undefined) pptSliders[targetId] = 0;
+      
+      if (btn.classList.contains('btn-prev')) {
+        pptSliders[targetId] = Math.max(0, pptSliders[targetId] - 1);
+      } else {
+        pptSliders[targetId] = Math.min(total - 1, pptSliders[targetId] + 1);
+      }
+      
+      const slider = document.getElementById(targetId);
+      if (slider) {
+        slider.style.transform = `translateX(-${pptSliders[targetId] * 100}%)`;
+      }
+      
+      const ind = document.getElementById(`ind-${targetId}`);
+      if (ind) {
+        ind.textContent = `${pptSliders[targetId] + 1} / ${total}`;
+      }
     });
   });
 </script>

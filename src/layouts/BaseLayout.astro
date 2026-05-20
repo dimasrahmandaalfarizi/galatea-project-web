@@ -22,13 +22,13 @@ const currentPath = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta property="og:title" content={`${title} — Galatea`} />
+    <meta property="og:title" content={`${title} — Project Galatea`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} — Galatea</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title} — Project Galatea</title>
   </head>
   <body class="noise-overlay">
     <!-- Navbar -->
@@ -36,13 +36,8 @@ const currentPath = Astro.url.pathname;
       <div class="section-container">
         <div class="flex items-center justify-between h-18 py-4">
           <!-- Logo -->
-          <a href="/" class="flex items-center gap-3 group">
-            <div class="w-9 h-9 rounded-lg bg-primary-600 flex items-center justify-center border border-white/10 group-hover:bg-primary-500 transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                <path d="M12 2L2 7V17L12 22L22 17V12H12V16L6 13V9L12 6L18 9V10" />
-              </svg>
-            </div>
-            <span class="font-bold text-xl text-white tracking-tight">Galatea<sup class="text-primary-400 text-xs">®</sup></span>
+          <a href="/" class="flex items-center group">
+            <span class="font-bold text-2xl text-white tracking-widest uppercase">GALATEA</span>
           </a>
 
           <!-- Desktop Nav -->
@@ -115,13 +110,8 @@ const currentPath = Astro.url.pathname;
       <div class="section-container py-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-8 h-8 rounded-md bg-primary-600 flex items-center justify-center border border-white/10">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                  <path d="M12 2L2 7V17L12 22L22 17V12H12V16L6 13V9L12 6L18 9V10" />
-                </svg>
-              </div>
-              <span class="font-bold text-lg text-white">Galatea<sup class="text-primary-400 text-xs">®</sup></span>
+            <div class="flex items-center mb-4">
+              <span class="font-bold text-xl text-white tracking-widest uppercase">GALATEA</span>
             </div>
             <p class="text-gray-500 text-sm leading-relaxed">
               Edukasi pengelolaan sampah untuk Indonesia yang lebih hijau dan berkelanjutan.
