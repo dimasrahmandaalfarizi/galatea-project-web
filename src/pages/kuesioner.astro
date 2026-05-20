@@ -244,39 +244,61 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
           <p class="text-gray-500 mt-4 text-sm">Pilih jawaban yang paling sesuai dengan kondisi dan pemahaman Anda.</p>
         </div>
 
-        <form id="quiz-form" class="space-y-6" data-aos>
-          {questions.map((q) => (
-            <div class="card-glass p-6 quiz-question" id={`q${q.id}`}>
-              <p class="text-white font-medium mb-4 leading-relaxed">
-                <span class="text-primary-400 font-bold mr-2">{q.id}.</span>
-                {q.text}
-              </p>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {options.map((opt) => (
-                  <label class="quiz-option cursor-pointer">
-                    <input
-                      type="radio"
-                      name={`q${q.id}`}
-                      value={opt.value}
-                      class="sr-only"
-                    />
-                    <div class="opt-box border border-white/10 rounded-xl px-3 py-3 text-center text-sm text-gray-400 transition-all duration-200 hover:border-primary-500/50 hover:text-white hover:bg-primary-900/30">
-                      <div class="w-3 h-3 rounded-full mx-auto mb-2" style={`background:${opt.color};opacity:0.6`}></div>
-                      {opt.label}
-                    </div>
-                  </label>
-                ))}
-              </div>
-            </div>
-          ))}
+        <form id="quiz-form" class="relative" data-aos>
+          <!-- Progress Bar -->
+          <div class="w-full bg-white/10 h-2 rounded-full mb-6 overflow-hidden">
+            <div id="quiz-progress" class="bg-primary-500 h-full rounded-full transition-all duration-500" style={`width: ${100 / questions.length}%`}></div>
+          </div>
 
-          <div class="text-center pt-4">
-            <button type="submit" class="btn-primary text-base px-12 py-5">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Slider Container -->
+          <div class="overflow-hidden">
+            <div id="quiz-slider" class="flex transition-transform duration-500 ease-in-out">
+              {questions.map((q, idx) => (
+                <div class="w-full flex-shrink-0 px-1 quiz-slide" id={`slide-${idx}`}>
+                  <div class="card-glass p-8 min-h-[250px] flex flex-col justify-center">
+                    <p class="text-white font-medium mb-6 leading-relaxed text-lg">
+                      <span class="text-primary-400 font-bold mr-2">Pertanyaan {q.id}.</span>
+                      {q.text}
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {options.map((opt) => (
+                        <label class="quiz-option cursor-pointer">
+                          <input
+                            type="radio"
+                            name={`q${q.id}`}
+                            value={opt.value}
+                            class="sr-only"
+                          />
+                          <div class="opt-box border border-white/10 rounded-xl px-3 py-4 text-center text-sm text-gray-400 transition-all duration-200 hover:border-primary-500/50 hover:text-white hover:bg-primary-900/30">
+                            <div class="w-4 h-4 rounded-full mx-auto mb-3" style={`background:${opt.color};opacity:0.6`}></div>
+                            <span class="font-medium">{opt.label}</span>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center justify-between mt-8">
+            <button type="button" id="btn-prev" class="px-6 py-3 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed hidden">
+              Kembali
+            </button>
+            <div class="text-gray-400 text-sm font-medium mx-auto" id="slide-counter">
+              1 dari {questions.length}
+            </div>
+            <button type="button" id="btn-next" class="btn-primary px-8 py-3">
+              Selanjutnya
+            </button>
+            <button type="submit" id="btn-submit" class="btn-primary px-8 py-3 hidden">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline mr-2 -mt-1">
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              Kirim Kuesioner
+              Kirim
             </button>
           </div>
         </form>
@@ -329,28 +351,95 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
     });
   });
 
+  // Slide logic
+  const slides = document.querySelectorAll('.quiz-slide');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+
+  const slider = document.getElementById('quiz-slider');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const btnSubmit = document.getElementById('btn-submit');
+  const slideCounter = document.getElementById('slide-counter');
+  const progress = document.getElementById('quiz-progress');
+
+  function updateSlider() {
+    if (slider) {
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    
+    if (slideCounter) {
+      slideCounter.textContent = `${currentSlide + 1} dari ${totalSlides}`;
+    }
+
+    if (progress) {
+      progress.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+    }
+
+    if (currentSlide === 0) {
+      btnPrev?.classList.add('hidden');
+    } else {
+      btnPrev?.classList.remove('hidden');
+    }
+
+    if (currentSlide === totalSlides - 1) {
+      btnNext?.classList.add('hidden');
+      btnSubmit?.classList.remove('hidden');
+    } else {
+      btnNext?.classList.remove('hidden');
+      btnSubmit?.classList.add('hidden');
+    }
+  }
+
+  btnPrev?.addEventListener('click', () => {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlider();
+    }
+  });
+
+  btnNext?.addEventListener('click', () => {
+    // Validasi apakah sudah diisi
+    const currentQId = currentSlide + 1;
+    const answered = document.querySelector(`input[name="q${currentQId}"]:checked`);
+    if (!answered) {
+      alert(`Mohon jawab pertanyaan ini terlebih dahulu!`);
+      return;
+    }
+
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSlider();
+    }
+  });
+
+  // Initialize
+  updateSlider();
+
   // Form submit
   document.getElementById('quiz-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const data = new FormData(form);
-    const unanswered: string[] = [];
-    for (let i = 1; i <= 20; i++) {
-      if (!data.get(`q${i}`)) unanswered.push(`Pertanyaan ${i}`);
-    }
-    if (unanswered.length > 0) {
-      alert(`Mohon jawab semua pertanyaan!\n\nBelum dijawab: ${unanswered.slice(0, 5).join(', ')}${unanswered.length > 5 ? ', ...' : ''}`);
+    
+    // Validasi pertanyaan terakhir
+    const lastQId = totalSlides;
+    const answered = document.querySelector(`input[name="q${lastQId}"]:checked`);
+    if (!answered) {
+      alert(`Mohon jawab pertanyaan terakhir ini!`);
       return;
     }
+
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+    
     form.classList.add('hidden');
     document.getElementById('success-msg')?.classList.remove('hidden');
     window.scrollTo({ top: document.getElementById('success-msg')!.offsetTop - 100, behavior: 'smooth' });
 
     // Format data untuk di-download ke CSV
     let csvContent = "Pertanyaan,Jawaban\n";
-    for (let i = 1; i <= 20; i++) {
-      const qText = document.querySelector(`#q${i} p`)?.textContent?.replace(/^\d+\.\s*/, '').trim() || `Pertanyaan ${i}`;
-      // Wrap in quotes to avoid comma issues in CSV
+    for (let i = 1; i <= totalSlides; i++) {
+      const slide = document.getElementById(`slide-${i-1}`);
+      const qText = slide?.querySelector('p')?.textContent?.replace(/Pertanyaan \d+\.\s*/, '').trim() || `Pertanyaan ${i}`;
       csvContent += `"${qText}","${data.get(`q${i}`)}"\n`;
     }
     csvContent += `\nWaktu Submit,"${new Date().toLocaleString('id-ID')}"\n`;
@@ -360,7 +449,7 @@ const positifPct = Math.round(((totalSS + totalS) / totalAll) * 100);
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "hasil_kuesioner_galatea.csv");
-    document.body.appendChild(downloadAnchorNode); // Diperlukan untuk Firefox
+    document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
   });
